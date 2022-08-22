@@ -1,0 +1,159 @@
+	*{
+		margin: 0px;
+		padding: 0px;
+		
+	}
+	body{
+		background-color: rgba(0,0,0,0.1);
+	}
+	
+	
+	#form_main_div{
+		width: 100%;
+		height: auto;
+		
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+
+
+	}
+
+	label{
+		font-size: 18px;
+		font-weight: bold;
+		color: red;
+
+	}
+	select{
+		width: 100%;
+		height: 30px;
+		margin-top: 5px;
+	}
+	input{
+		width: 100%;
+		height: 30px;
+		margin-top: 5px;
+	}
+	button{
+		width: 100px;
+		height: 30px;
+		margin-top: 25px;
+		background-color: #1c3961;
+		color: white;
+		font-weight: bold;
+	}
+
+	.form_box{
+		padding: 10px;
+
+	}
+	.box1{
+		/*background-color: orange;*/
+	}
+	.box2{
+		/*background-color: orange;*/
+	}
+	.box3{
+		/*background-color: orange;*/
+	}
+	.box4{ 
+		/*background-color: orange;*/
+		 }
+	.box5{
+		/*background-color: orange;*/
+	}
+
+
+.display_report{
+	width: 90%;
+	height: auto;
+	margin-left: 5%;
+
+}
+.display_table{
+	width: 100%;
+	border-spacing: 0px;
+	background-color: white;
+	
+	
+ 
+}
+
+.display_table th {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	  font-weight: bold;
+	  padding: 10px;
+	  font-size: 16px;
+	  background-color:#1c3961;
+	  color: white;
+	}
+
+
+.display_table td {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	  font-weight: bold;
+	  padding: 10px;
+	  font-size: 16px;
+	  
+	}
+
+	#model{
+	background-color:rgba(0,0,0,0.8);
+	position: absolute;
+	width:100%;
+    height: auto;
+	z-index:100;
+	display:none;
+}
+#model-form{
+	background-color:white;
+	width:80%;
+	height: auto;
+	position:relative;
+	top:20px;
+	left:10%;
+	padding:;
+	border-radius:4px;	
+}
+#close-btn{
+	background-color:red;
+	color:white;
+	width:30px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	border-radius:50%;
+	position:absolute;
+	top:-15px;
+	right:-15px;
+	cursor:pointer;
+}
+#record_table{
+	width: 100%;
+	cellpadding: "0";
+	border: 1px solid black;
+	
+}
+#record_table th {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	  font-weight: bold;
+	  padding: 10px;
+	  font-size: 16px;
+	  background-color:#1c3961;
+	  color: white;
+	}
+
+
+#record_table td {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	  font-weight: bold;
+	  padding: 10px;
+	  font-size: 16px;
+	  
+
+	}

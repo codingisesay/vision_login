@@ -1,0 +1,75 @@
+<?php 
+include('testing_session.php');
+
+?>
+<?php 
+$search_key = $_POST['search_key'];
+$selected_dated = $_POST['selected_dated'];
+
+ $q="SELECT `checklist_record`.*, `user`.`user_name` FROM `checklist_record` LEFT JOIN `user` ON `checklist_record`.`testing_mamber` = `user`.`user_id` WHERE user.user_name LIKE '%$search_key%' AND checklist_record.class_date LIKE '%$selected_dated%'";
+        $run_report = mysqli_query($connect,$q);
+        $output="";
+        if(mysqli_num_rows($run_report) > 0){
+            $output='<table border="1px" width="100%" cellspacing="0">
+            <tr>
+            <th>Class/Diss. Id</th>
+            <th>Checklist Type</th>
+            <th>Batch/Test Code</th>
+            <th>Class</th>
+            <th>Testing Person</th>
+            <th>Issue During Testing</th>
+            <th>No. of Interruption</th>
+            <th>Time Lost</th>
+            <th>Event Post Update</th>
+            <th>Check Full Detail</th>
+           
+            </tr>';
+               
+            while($data = mysqli_fetch_assoc($run_report)){
+                $checklist_id = $data['checklist_id'];
+                $qury="SELECT * FROM issue_during_testing_remark WHERE checklist_id = '$checklist_id'";
+                $run_remark = mysqli_query($connect,$qury);
+                $row_remark = mysqli_num_rows($run_remark);
+                
+                $total_time_lost = 0;
+                 for($i=1; $i <= $row_remark; $i++){
+                    $issue_data = mysqli_fetch_assoc($run_remark);
+                    //x += y
+                    
+                $total_time_lost += $issue_data['time_lost_during_class'];
+            
+                }
+                $output.="<tr>
+                <td>{$data['class_id_from_lecture_list']}</td>
+                 <td>{$data['checklist_type']}</td>";
+                 $str_batch = $data['batch'];
+                 $str = str_replace(",","<br>*","$str_batch");
+
+                 $output.="<td>*{$str}</td>
+                 <td>{$data['subject']}</td>
+                 <td>{$data['user_name']}</td>
+                 <td>{$data['observation_during_testing']}</td>
+                 <td>{$row_remark}</td>
+                 <td>{$total_time_lost} Mins</td>
+                 <td>{$data['event_post_update']}</td>
+                 <td><button class='view_detail_checklist' data-class_id='{$data['class_id_from_lecture_list']}'style='padding:5px;background-color:#1c3961; color:white;'>View</button></td>
+               
+                </tr>";
+            }
+            $output.="</table>";
+            
+            mysqli_close($connect);
+            echo $output;
+            
+        }else{
+        mysqli_close($connect);
+    echo"Record Not Found";
+    
+    
+}
+
+
+       
+        
+
+?>
