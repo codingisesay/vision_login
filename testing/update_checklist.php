@@ -4,29 +4,29 @@ mysqli_close($connect);
 
 ?>
             <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
                 <link rel="stylesheet" href="css/update_checklist.css">
             </head>
             <body>
                 <?php include('testing_navbar.php'); ?>
-                <div class="search_update_checklist">
-                    
-                    <label>Enter Class ID</label>
-                    <input type="number" id="input_class_id" value="<?php echo $_GET['class_id']?>">
-                    <button type="submit" id="select_update">Submit</button>
-                    <button type="submit" id="issue_during_class">Issue During Class</button>
-                    
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-sm-4 search_update_checklist">
+                            <label>Enter Class ID</label>
+                            <input type="number" id="input_class_id" value="<?php echo $_GET['class_id']?>">
+                            <button type="submit" id="select_update">Submit</button>
+                            <button type="submit" id="issue_during_class">Issue During Class</button> 
+                        </div>
+                        <div class="col-12 col-sm-8">
+                            <div id="update_record">
+                                
+                            
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                <table id="update_record">
-                    
-                   
-                    
-                    
-                </table>
-                
-                
-                
-            </div>
             
             <script type="text/javascript" src="js/jquery.js"></script>
             <script>

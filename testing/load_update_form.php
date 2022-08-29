@@ -29,7 +29,7 @@ include('testing_session.php');
             $output.="<td>Class Started at:</td>
             <td><input type='time' id='start_time' value={$data['class_started']} style='width:80%;'></td>
             <td><button class='update-btn' data-checklist_id='{$data['checklist_id']}'>Update</button></td>
-        </tr>";
+            </tr>";
             if($data['class_end_at'] == ''){
                 $output.="<tr style='display:block;'>";
             }else if($data['class_end_at'] !== ''){
