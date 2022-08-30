@@ -115,12 +115,16 @@ table td {
 	}
 
 	#model{
-	background-color:rgba(0,0,0,0.8);
-	position: absolute;
-	width:100%;
-    height: auto;
-	z-index:100;
-	display:none;
+		height:90%;
+		width:80%;
+		display: none;
+		position: fixed;
+		top: 5%;
+		/* bottom: 5%; */
+		left: 10%;
+		background: rgb(52 49 49 / 88%);
+		z-index: 1;
+		overflow-y: scroll !important;
 }
 #model-form{
 	background-color:white;
@@ -132,6 +136,17 @@ table td {
 	padding:;
 	border-radius:4px;	
 }
+@media (max-width: 575.98px) { 
+	#model-form{
+		background-color:white;
+		width:100%;
+		height: auto;
+		position:relative;
+		top:20px;
+		padding:;
+		border-radius:4px;	
+	}
+ }
 #close-btn{
 	background-color:red;
 	color:white;
