@@ -68,4 +68,7 @@
             .table-overflow{
                 overflow: hidden;
                 overflow-x: auto;
+            }                       
+            .button-color{
+                background-color: #1c3961;
             }

@@ -6,7 +6,7 @@
 	body{
 		background-color: rgba(0,0,0,0.1);
 	}
-	
+/* 	
 .select_date_for_report{
 	width: 80%;
 	height: 10%;
@@ -15,20 +15,46 @@
 	display: flex;
 	
 	justify-content: space-between;
-}
-.select_date_for_report>div{
+} */
+/* .select_date_for_report>div{
 	width: 50%;
 	height: 100%;
 	
 	display: flex;
 	align-items: center;
-}
+} */
 
 #search_term{
 	width: 300px;
-	height: 30px;
-	margin-left: 10px;
+	/* height: 30px;
+	margin-left: 10px; */
 }
+
+.table-overflow{
+	overflow: hidden;
+	overflow-x: auto;
+}  
+
+table th {
+	border: 1px solid black;
+	border-collapse: collapse;
+	font-weight: bold;
+	padding: 10px;
+	font-size: 16px;
+	background-color:#1c3961 !important;
+	color: white;
+  }
+
+
+table td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	font-weight: bold;
+	padding: 10px;
+	font-size: 16px;
+	
+
+  }
 
 
 
@@ -38,13 +64,13 @@
 	font-weight: bold;
 	color: red;
 }
-.select_date{
+/* .select_date{
 	width: 40%;
 	margin-left: 5px;
 	height: 50%;
 
-}
-.submit_date{
+} */
+/* .submit_date{
 	width: 12%;
 	margin-left: 1%;
 	height: 50%;
@@ -52,7 +78,7 @@
 	color: white;
 	font-weight: bold;
 	border: none;
-}
+} */
 .display_report{
 	width: 90%;
 	height: auto;
@@ -173,6 +199,9 @@ table td {
 	  font-weight: bold;
 	  padding: 10px;
 	  font-size: 16px;
-	  
+	}
 
+	.button-color{
+		background-color: #1c3961;
+		color: white;
 	}

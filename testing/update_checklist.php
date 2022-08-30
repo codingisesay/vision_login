@@ -14,8 +14,8 @@ mysqli_close($connect);
                         <div class="col-12 col-sm-4 search_update_checklist">
                             <label>Enter Class ID</label>
                             <input type="number" id="input_class_id" value="<?php echo $_GET['class_id']?>">
-                            <button type="submit" id="select_update">Submit</button>
-                            <button type="submit" id="issue_during_class">Issue During Class</button> 
+                            <button class="btn btn-primary" type="submit" id="select_update">Submit</button>
+                            <button class="btn btn-primary" type="submit" id="issue_during_class">Issue During Class</button> 
                         </div>
                         <div class="col-12 col-sm-8">
                             <div id="update_record">
