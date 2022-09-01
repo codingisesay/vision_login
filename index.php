@@ -43,6 +43,7 @@ mysqli_close($connect);
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/index.css">
 
@@ -52,7 +53,7 @@ mysqli_close($connect);
 <body>
     <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-md-9 col-lg-6 col-xl-5 d-md-none d-lg-block">
+            <div class="col-md-9 col-lg-6 col-xl-5 d-none d-lg-block">
             <img src="image/login_page_image.webp" id="" style="width:100%">
             </div>
             <div class="centerdiv col-md-8 col-lg-6 col-xl-4 offset-xl-1">

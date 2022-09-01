@@ -7,6 +7,8 @@ mysqli_close($connect);
 <html>
 
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="css/testing_home.css">
 </head>
 
@@ -16,8 +18,10 @@ mysqli_close($connect);
     <div class="p-2 row">
         <div class="p-2 col-12 col-md-12 col-lg-6 text-center">
             <lable id="select">Select Date &nbsp;</lable>
-            <input type="date" class="input-box" id="date">&nbsp;
-            <button class="btn-primary btn p-0" id="submit_date">Submit</button>
+            <input type="date" class="input-box" id="date">
+            <spam class="text-center">
+                <button class="btn-primary btn p-0" id="submit_date">Submit</button>
+</spam>
         </div>
         <div class="p-2 col-12 col-md-12 col-lg-6 text-center">
             <label>Search &nbsp;</label>
