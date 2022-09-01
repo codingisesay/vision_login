@@ -15,7 +15,7 @@ include('testing_session.php');
                 $run_query_batch = mysqli_query($connect,$q);
                 $output="";
                 if(mysqli_num_rows($run_query_batch) > 0){
-                    $output ='<table border="1px" width="100%" cellspacing="0">
+                    $output ='<table id="example" class="table table-striped table-bordered nowrap" style="width:100%" border="1">
                     <tr>
             <th>Class/Diss. Id</th>
 			<th>Date</th>
