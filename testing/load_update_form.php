@@ -12,65 +12,64 @@ include('testing_session.php');
              
         $output="";
         if($rows > 0){
-            $output = "<table border='1px' cellspacing='0'>";
-            $output.="<tr>
-            <th>Class Id : 
-            {$data['class_id_from_lecture_list']}</th>
-            </tr>";
+            $output = "<div>";
+            $output.="
+            <div class='h3'>Class Id : 
+            {$data['class_id_from_lecture_list']}</div>";
 
            if($data['class_started'] == ''){
-            $output.="<tr style='display:block;'>";
+            $output.="<div class='row' style='display:block;'>";
 
             }else if($data['class_started'] !== ''){
 
-                $output.="<tr style='display:none;'>";
+                $output.="<div class='row' style='display:none;'>";
             }
             
-            $output.="<td>Class Started at:</td>
-            <td><input type='time' id='start_time' value={$data['class_started']} style='width:80%;'></td>
-            <td><button class='update-btn' data-checklist_id='{$data['checklist_id']}'>Update</button></td>
-        </tr>";
+            $output.="<div class='col-12 col-md-6 my-2'>Class Started at:</div>
+            <div class='col-12 col-md-6 my-2'><input class='form-control' type='time' id='start_time' value={$data['class_started']} style='width:80%;'></div>
+            <div class='col-12 my-2'><button class='update-btn btn btn-primary button-color' data-checklist_id='{$data['checklist_id']}'>Update</button></div>
+            </div>";
             if($data['class_end_at'] == ''){
-                $output.="<tr style='display:block;'>";
+                $output.="<div class='row' style='display:block;'>";
             }else if($data['class_end_at'] !== ''){
-                $output.="<tr style='display:none;'>";
+                $output.="<div class='row' style='display:none;'>";
             }
 
-            $output.="<td>Class End At:</td>
-            <td><input type='time' id='end_time' value={$data['class_end_at']} style='width:80%;'></td>
-            <td><button class='class_end_btn' data-checklist_id='{$data['checklist_id']}'>Update</button></td>
-            </tr>";
+            $output.="<div class='col-12 col-md-6 my-2'>Class End At:</div>
+            <div class='col-12 col-md-6 my-2'><input type='time' class='form-control' id='end_time' value={$data['class_end_at']} style='width:80%;'></div>
+            <div class='col-12 my-2'><button class='class_end_btn btn btn-primary button-color' data-checklist_id='{$data['checklist_id']}'>Update</button></div>
+            </div>";
             if($data['event_post_update'] == ''){
-                $output.="<tr style='display:block;'>";
+                $output.="<div class='row' style='display:block;'>";
             }else if($data['event_post_update'] !== ''){
-                $output.="<tr style='display:none;'>";
+                $output.="<div class='row' style='display:none;'>";
             }
             
-            $output.="<td>Event Post Update After Live class:</td>
-            <td><select id='select_event_post' onclick='display_event_post_remark();' style='width:80%;'>
+            $output.="<div class='col-12 col-md-6 my-2'>Event Post Update After Live class:</div>
+            <div class='col-12 col-md-6 my-2'><select class='form-control' id='select_event_post' onclick='display_event_post_remark();' style='width:80%;'>
             <option>Select Any One</option>
             <option>Yes</option>
             <option>No</option>
-            </select><textarea placeholder='Remark' rows='2' cols='38' id='event_post_remark' style='display:none; margin-top:10px;'></textarea></td>
-            <td><button class='event_post_update_btn' data-checklist_id='{$data['checklist_id']}'>Update</button></td>
-            </tr>";
+            </select><textarea placeholder='Remark' rows='2' cols='38' class='form-control' id='event_post_remark' style='display:none; margin-top:10px;'></textarea></div>
+            <div class='col-12 my-2'><button class='event_post_update_btn btn btn-primary button-color' data-checklist_id='{$data['checklist_id']}'>Update</button></div>
+            </div>";
             if($data['recorded_video_uploaded'] == ''){
-                $output.="<tr style='display:block;'>";
+                $output.="<div class='row' style='display:block;'>";
             }else if($data['recorded_video_uploaded'] !== ''){
-                $output.="<tr style='display:none;'>";
+                $output.="<div class='row' style='display:none;'>";
 
             }
 
-            $output.="<td>Recorded Video Uploaded:</td>
-            <td><select id='recorded_video_uploaded' onclick='recorded_video_update();' style='width:80%;'>
+            $output.="<div class='col-12 col-md-6 my-2'>Recorded Video Uploaded:</div>
+            <div class='col-12 col-md-6 my-2'><select id='recorded_video_uploaded' class='form-control' onclick='recorded_video_update();' style='width:80%;'>
             <option>Select Any One</option>
             <option>Uploaded</option>
             <option>Not Uploaded</option>
-            </select><input type='datetime-local' style='margin-top:10px; display:none;' id='recorded_video_upload_time'><textarea placeholder='Remark' rows='2' cols='38' id='recorded_video_remark' style='display:none; margin-top:10px;'>
-            </textarea></td>
-            <td><button class='recorded_video_uploaded-btn' data-checklist_id='{$data['checklist_id']}'>Update</button></td>
-            </tr>
-            </table>";
+            </select><input type='datetime-local' class='form-control' style='margin-top:10px; display:none;' id='recorded_video_upload_time'><textarea class='form-control' placeholder='Remark' rows='2' cols='38' id='recorded_video_remark' style='display:none; margin-top:10px;'>
+            </textarea></div>
+            <div class='col-12 my-2'><button class='recorded_video_uploaded-btn btn btn-primary button-color' data-checklist_id='{$data['checklist_id']}'>Update</button></div>
+            </div>
+            </div>";
             echo $output;
 			
 

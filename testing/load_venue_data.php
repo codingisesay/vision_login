@@ -11,14 +11,17 @@ include('testing_session.php');
         if(mysqli_num_rows($run_report) > 0){
 
             $output="
-            <label>Select Venue:</label>
-    <select id='load_data'>
+            <div class='col-4'>Select Venue:</div>
+            <div class='col-8'>
+            
+    <select id='load_data' class='form-control'>
       <option>Select Any One</option>";
       while($batch_data = mysqli_fetch_assoc($run_report)){
         $output.="<option>{$batch_data['venue_name']}</option>";
       }
       
-    $output.="</select>";
+    $output.="</select>
+    </div>";
 
         }
         echo $output;

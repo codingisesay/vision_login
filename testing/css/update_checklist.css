@@ -8,7 +8,6 @@
 	}
 	
 	.search_update_checklist{
-		width: 20%;
 		padding: 20px;
 		display: inline-block;
 		
@@ -43,17 +42,18 @@
 	}
 		#update_record{
 			
-			background-color: white;
+			/* background-color: white;
 			width: 60%;
 			position: relative;
 			left: 30%;
             bottom: 120px;
-			border: 1px solid black;
+			border: 1px solid black; */
+			margin-top: 50px;
 
 
 		}
 		table#update_record, th, td{
-			width: 60%;
+			/* width: 60%; */
 			border: 1px solid black;
 			border-collapse: collapse;
 			padding: 7px;

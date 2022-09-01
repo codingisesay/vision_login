@@ -11,14 +11,16 @@ include('testing_session.php');
         if(mysqli_num_rows($run_report) > 0){
 
             $output="
-            <label>Select Batch:</label>
-    <select id='load_data'>
-      <option>Select Any One</option>";
-      while($batch_data = mysqli_fetch_assoc($run_report)){
-        $output.="<option>{$batch_data['batch_name']}</option>";
-      }
+            <div class='col-4'>Select Batch:</div>
+            <div class='col-8'>
+              <select class='form-control' id='load_data'>
+                <option>Select Any One</option>";
+                while($batch_data = mysqli_fetch_assoc($run_report)){
+                  $output.="<option>{$batch_data['batch_name']}</option>";
+                }
       
-    $output.="</select>";
+    $output.="</select>
+    </div>";
 
         }
         echo $output;

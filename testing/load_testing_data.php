@@ -26,7 +26,8 @@ include('testing_session.php');
          $output="";
 
          if($row > 0){
-            $output="<table border='1' class='go_checklist_table'>
+            $output="
+            <table id='example' class='go_checklist_table table table-striped table-bordered' style='width:100%' border='1'>
             <tr>
                 <th>Class ID</th>
                 <th>Date</th>
@@ -81,7 +82,7 @@ include('testing_session.php');
 
          }
 
-         echo $output;
+        //  echo $output;
 
     }else if($user_role == 3){
 
@@ -96,7 +97,7 @@ include('testing_session.php');
          $output="";
 
          if($row > 0){
-            $output="<table border='1' class='go_checklist_table'>
+            $output="<table id='example' class='go_checklist_table table table-striped table-bordered nowrap' style='width:100%' border='1'>
             <tr>
                 <th>Class ID</th>
                 <th>Date</th>
@@ -156,9 +157,8 @@ include('testing_session.php');
 
          }
 
-         echo $output;
-
-    }
-
+         
+        }
+        echo $output;
 
 ?>

@@ -4,42 +4,51 @@ mysqli_close($connect);
 
 ?>
                 <head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
                     <link rel="stylesheet" href="css/generate_report.css">
                 </head>
 
                <body>
                 <?php include('testing_navbar.php'); ?>
-                <div class="select_date_for_report">
-                    <div>
-                        <label>Select Date For Report:</label>
-                        <input type="date" class="select_date" id="date_select">
-                        <input type="submit" class="submit_date" id="input_select_date">
-                    </div>
-                    <div>
-                        <label>Search</label>
-                        <input type="text" id="search_term" placeholder="Search">
-                    </div>
+                <div class="container">
+                  <div class="row mb-2 mb-4">
+                    <div class="col-12 col-md-6">
+                      <div class="row">
+                        <div class="col-12 my-2">Select Date For Report:</div>
+                        <div class="col-8">
+                          <input type="date" class="select_date form-control" id="date_select">
                         </div>
-                        <div class="display_report">
-                            <table class="display_table">
-                                
-                            </table>
-
+                        <div class="col-4">
+                          <button type="submit" class="submit_date form-control btn btn-primary button-color" id="input_select_date">Submit</button>
                         </div>
-    <div id="model">
-    <div id="model-form">
-        <div id="close-btn">X</div>
-        
-    <table id="record_table">
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <div class="row">
+                        <div class="col-12 my-2">Search</div>
+                        <div class="col-12">
+                          <input type="text" id="search_term" class="form-control" placeholder="Search">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="display_report">
+                    <div class="display_table table-overflow">
+                        
+</div>
+                </div>
 
-    </table>
 
+                <div id="model">
+                  <div id="model-form">
+                      <div id="close-btn">X</div>
+                      
+                      <table id="record_table">
 
-
-    </div>
-
-
-    </div>
+                      </table>
+                  </div>
+                </div>
 
 
 
@@ -176,6 +185,10 @@ mysqli_close($connect);
 
 
 
+                            })
+
+                            $(document).ready(function () {
+                                $('#example').DataTable();
                             })
                         </script>
                       

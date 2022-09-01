@@ -15,7 +15,7 @@ include('testing_session.php');
                 $run_query_batch = mysqli_query($connect,$q);
                 $output="";
                 if(mysqli_num_rows($run_query_batch) > 0){
-                    $output ='<table border="1px" width="100%" cellspacing="0">
+                    $output ='<table id="example" class="table table-striped table-bordered nowrap" style="width:100%" border="1">
                     <tr>
             <th>Class/Diss. Id</th>
 			<th>Date</th>
@@ -66,8 +66,7 @@ include('testing_session.php');
                 </tr>";
             }
             $output.="</table>";
-            $output.="<a href='download_checklist_report.php?from_date={$from_date}&to_date={$to_date}&select_catogray={$select_catogray}&load_data={$load_data}'><button style='width:100%; padding:5px; background-color: #1c3961;color: white;font-weight: bold;
-                border: none; margin:5px;'>Download Excel</button></a>";
+            $output.="<a href='download_checklist_report.php?from_date={$from_date}&to_date={$to_date}&select_catogray={$select_catogray}&load_data={$load_data}'><button class='btn btn-primary button-color mb-2'>Download Excel</button></a>";
            mysqli_close($connect);
             echo $output;
 			

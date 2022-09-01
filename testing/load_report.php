@@ -18,7 +18,7 @@ include('testing_session.php');
         $run_report = mysqli_query($connect,$q);
         $output="";
         if(mysqli_num_rows($run_report) > 0){
-            $output='<table border="1px" width="100%" cellspacing="0">
+            $output='<table id="example" class="table table-striped table-bordered nowrap" style="width:100%" border="1">
             <tr>
             <th>Class/Diss. Id</th>
             <th>Checklist Type</th>
@@ -83,7 +83,7 @@ include('testing_session.php');
         $run_report = mysqli_query($connect,$q);
         $output="";
         if(mysqli_num_rows($run_report) > 0){
-            $output='<table border="1px" width="100%" cellspacing="0">
+            $output='<table id="example" class="table table-striped table-bordered nowrap" style="width:100%" border="1">
             <tr>
             <th>Class/Diss. Id</th>
             <th>Checklist Type</th>
@@ -125,13 +125,12 @@ include('testing_session.php');
                  <td>{$row_remark}</td>
                  <td>{$total_time_lost} Mins</td>
                  <td>{$data['event_post_update']}</td>
-                 <td><button class='view_detail_checklist' data-class_id='{$data['class_id_from_lecture_list']}'style='padding:5px;background-color:#1c3961; color:white;'>View</button></td>
+                 <td><button class='view_detail_checklist btn' data-class_id='{$data['class_id_from_lecture_list']}'style='padding:5px;background-color:#1c3961; color:white;'>View</button></td>
                
                 </tr>";
             }
             $output.="</table>";
-            $output.="<a href='send_mail.php?date={$date}'><button style='width:100%; padding:5px; background-color: #1c3961;color: white;font-weight: bold;
-                border: none; margin:5px;'>Mail Report</button></a>";
+            $output.="<a href='send_mail.php?date={$date}'><button class='btn btn-primary button-color'>Mail Report</button></a>";
                     mysqli_close($connect);
             echo $output;
             

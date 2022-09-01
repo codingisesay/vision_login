@@ -23,7 +23,7 @@ table th {
 	  font-weight: bold;
 	  padding: 10px;
 	  font-size: 16px;
-	  background-color:#1c3961;
+	  background-color:#1c3961 !important;
 	  color: white;
 	}
 
