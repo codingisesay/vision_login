@@ -33,6 +33,7 @@ include('testing_functions.php');
                               $data_user = mysqli_fetch_assoc($data_from_user_table);
                              ?>
                             <div class="col-12 col-md-6 my-2"><input type="text" class="form-control" value="<?php echo  $data_user['user_name']; ?>" name="testing_member" ></div>
+                            <hr>
                         </div>
                         <!--<tr>
                             <div>Class ID From Lecture List</div>
@@ -41,10 +42,12 @@ include('testing_functions.php');
                          <div class="row">
                             <div class="col-12 col-md-6 my-2">Testing Started At</div>
                             <div class="col-12 col-md-6 my-2"><input type="datetime-local" class="form-control" name="testing_time_started" required></div>
+                            <hr>
                         </div>
                          <div class="row">
                             <div class="col-12 col-md-6 my-2">Testing End At</div>
                             <div class="col-12 col-md-6 my-2"><input type="datetime-local" class="form-control" name="testing_time_end" required></div>
+                            <hr>
                         </div>
                           <div class="row">
                             <div class="col-12 col-md-6 my-2">Venue</div>
@@ -70,6 +73,7 @@ include('testing_functions.php');
                                 ?>
                                
                             </select></div>
+                            <hr>
                         </div>
                          
                         <div class="row">
@@ -107,7 +111,7 @@ include('testing_functions.php');
                                     </div>
                                 </div>
                         </div>
-                        
+                        <hr>
                         </div>
                           <div class="row">
                             <div class="col-12 col-md-6 my-2">Faculty</div>
@@ -128,6 +132,7 @@ include('testing_functions.php');
 
                                 ?>
                             </select></div>
+                            <hr>
                         </div>
 
 
@@ -141,7 +146,9 @@ include('testing_functions.php');
                                     <option value="Not Available">Not Available</option>
 									<option value="Not Applicable">Not Applicable</option>
                                 </select>
-                            </div></div>
+                            </div>
+                            <hr>
+                        </div>
 
 
 
@@ -167,6 +174,7 @@ include('testing_functions.php');
 
                                  ?>
                             </select></div>
+                            <hr>
                         </div>
                           <div class="row">
                             <div class="col-12 col-md-6 my-2">Camera Man</div>
@@ -188,6 +196,7 @@ include('testing_functions.php');
 
                                  ?>
                             </select></div>
+                            <hr>
                         </div>
 
 
@@ -204,6 +213,7 @@ include('testing_functions.php');
 									<option value="Not Applicable">Not Applicable</option>
                                 </select>
                             </div>
+                            <hr>
                         </div>
 
 
@@ -232,6 +242,7 @@ include('testing_functions.php');
                                  }
                                 ?>
                             </select></div>
+                            <hr>
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-6 my-2">Board Marker/Digital Board Pen</div>
@@ -240,6 +251,7 @@ include('testing_functions.php');
                                 <option value="Checked">Checked</option>
                                 <option value="Unchecked">Unchecked</option>
                             </select><textarea id="board_pen_marker_remark" class="form-control" style="display: none;margin-top:10px;"placeholder="Remark" rows="2" cols="38" name="insert_board_pen_marker_remark" ></textarea></div>
+                            <hr>
                         </div>
 
                         <div class="row">
@@ -250,6 +262,7 @@ include('testing_functions.php');
                                 <option value="No">No</option>
 								<option value="Not Applicable">Not Applicable</option>
                             </select><textarea id="display_synopsis_remark" style="display: none;margin-top:10px;"placeholder="Remark" rows="2" cols="38" name="insert_display_synopsis_remark" ></textarea></div>
+                            <hr>
                         </div>
 
                         <div class="row">
@@ -259,6 +272,7 @@ include('testing_functions.php');
                                 <option value="Correct">Correct</option>
                                 <option value="Incorrect">Incorrect</option>
                             </select><textarea id="Camera_Focous_incorrect_remark" style="display: none;margin-top:10px;" class="form-control" placeholder="Remark" rows="2" cols="38" name="insert_camera_focous_remark" ></textarea></div>
+                            <hr>
                             
                         </div>
                          <div class="row">
@@ -268,6 +282,7 @@ include('testing_functions.php');
                                 <option value="Charger Pluged">Charger Pluged</option>
                                 <option value="Charger Not Pluged">Charger Not Pluged</option>
                             </select><textarea id="Camera_Battery_incorrect_remark" class="form-control" style="display: none; margin-top:10px;" placeholder="Remark" rows="2" cols="38" name="insert_camera_battery_remark" ></textarea></div>
+                            <hr>
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-6 my-2">Memory Card</div>
@@ -276,6 +291,7 @@ include('testing_functions.php');
                                 <option value="Inserted">Inserted</option>
                                 <option value="Not Inserted">Not Inserted</option>
                             </select><textarea id="memory_card_remark" class="form-control" style="display: none; margin-top:10px;" placeholder="Remark" rows="2" cols="38" name="insert_memory_card_remark" required></textarea></div>
+                            <hr>
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-6 my-2">Audio Live</div>
@@ -284,6 +300,7 @@ include('testing_functions.php');
                                 <option value="Checked">Checked</option>
                                 <option value="Unchecked">Unchecked</option>
                             </select><textarea id="audio_live_remark" class="form-control" style="display: none; margin-top:10px;" placeholder="Remark" rows="2" cols="38" name="insert_audio_live_remark" required></textarea></div>
+                            <hr>
                         </div>
 
 
@@ -297,6 +314,7 @@ include('testing_functions.php');
                                 <option value="Faculty">Faculty</option>
                                 <option value="Not checked">Not checked</option>
                             </select></div>
+                            <hr>
                         </div>
 
 
@@ -308,6 +326,7 @@ include('testing_functions.php');
                                 <option value="360px, 480px, 720px">360px, 480px, 720px</option>
                                 <option value="360px, 480px, 720px, 1080px">360px, 480px, 720px, 1080px</option>
                             </select></div>
+                            <hr>
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-6 my-2"> Internet Line :</div>
@@ -329,6 +348,7 @@ include('testing_functions.php');
                                  }
                                 
                                 ?></select><textarea id="internet_speed" class="form-control" style="display: none; margin-top:10px;" placeholder="Remark" rows="2" cols="38" name="insert_internet_speed" required></textarea></div>
+                            <hr>
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-6 my-2"> Remote System Laptop :</div>
@@ -339,6 +359,7 @@ include('testing_functions.php');
 								<option value="Not Applicable">Not Applicable</option>
                                 
                             </select><textarea id="remote_system_remark" class="form-control" style="display: none; margin-top:10px;" placeholder="Remark" rows="2" cols="38" name="insert_remote_laptop_remar" ></textarea></div>
+                            <hr>
                         </div>
 
 
@@ -352,6 +373,8 @@ include('testing_functions.php');
                                 <option value="Not Applicable">Not Applicable</option>
                                 
                             </select><textarea id="remote_system_i_pad_remark" class="form-control" style="display: none; margin-top:10px;" placeholder="Remark" rows="2" cols="38" name="remote_ipad_remark"></textarea></div>
+                            <hr>
+
                         </div>
 
 
@@ -379,6 +402,8 @@ include('testing_functions.php');
                                   }
                                  
                                 ?></select></div>
+                            <hr>
+
                         </div>
                         <div class="row Discussion_disable">
                             <div class="col-12 col-md-6 my-2"> Convey To Batch Coo. :</div>
@@ -389,6 +414,8 @@ include('testing_functions.php');
 								<option value="Not Required">Not Required</option>
                                 
                             </select><textarea id="Conved_To_Batch_Coo_remark" class="form-control" style="display: none; margin-top:10px;" placeholder="Remark" rows="2" cols="38" name="convey_to_bcoo_remark" ></textarea></div>
+                            <hr>
+
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-6 my-2"> Handout :</div>
@@ -399,6 +426,8 @@ include('testing_functions.php');
                                 <option value="Not Applicable">Not Applicable</option>
                                 
                             </select><textarea id="handout_remark" class="form-control" style="display: none; margin-top:10px;" placeholder="Remark" rows="2" cols="38" name="handout_remark"></textarea></div>
+                            <hr>
+
                         </div>
                          <div class="row Discussion_disable">
                             <div class="col-12 col-md-6 my-2"> Next Class Update:</div>
@@ -409,6 +438,7 @@ include('testing_functions.php');
 								<option value="Not Applicable">Not Applicable</option>
                                 
                             </select><textarea id="next_class_remark" class="form-control" style="display: none; margin-top:10px;" placeholder="Remark" rows="2" cols="38" name="next_class_remark"></textarea></div>
+                            <hr>
                         </div>
                          <div class="row Discussion_disable">
                             <div class="col-12 col-md-6 my-2"> Query Testing:</div>
@@ -419,6 +449,7 @@ include('testing_functions.php');
 								<option value="Not Applicable">Not Applicable</option>
                                 
                             </select><textarea id="query_testing_remark" class="form-control" style="display: none; margin-top:10px;" placeholder="Remark" rows="2" cols="38" name="testing_query_remark" ></textarea></div>
+                            <hr>
                         </div>
                         <!-- <div class="row">
                             <th colspan="2"></th>
@@ -427,9 +458,10 @@ include('testing_functions.php');
                             <div class="col-12 col-md-6 my-2">Observation During Testing</div>
                             <div class="col-12 col-md-6 my-2"><textarea class="form-control" rows="4" cols="40" name="observation_during_testing" required></textarea>
                             </div>
+                            <hr>
                         </div>
                   
-                         <div class="row text-center">
+                         <div class="row text-center mb-4">
                             <div class="col-12">
                                 <input type="hidden" name ='checklist_id' value="<?php echo $_GET['checklist_id']?>">
                             </div>
