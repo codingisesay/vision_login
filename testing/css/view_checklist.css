@@ -128,12 +128,12 @@ table td {
 
 	#model{
 		height:90%;
-		width:80%;
+		width:100%;
 		display: none;
 		position: fixed;
 		top: 5%;
 		/* bottom: 5%; */
-		left: 10%;
+		/* left: 10%; */
 		background: rgb(52 49 49 / 88%);
 		z-index: 1;
 		overflow-y: scroll !important;
