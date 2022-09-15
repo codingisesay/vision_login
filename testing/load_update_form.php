@@ -12,7 +12,7 @@ include('testing_session.php');
              
         $output="";
         if($rows > 0){
-            $output = "<div>";
+            $output = "<div class='load-update'>";
             $output.="
             <div class='h3'>Class Id : 
             {$data['class_id_from_lecture_list']}</div>";
