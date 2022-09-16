@@ -58,7 +58,7 @@ mysqli_close($connect);
 
                                 if(data == 1){
                                     alert("Class Starting Time Updated");
-                                    $(element).closest("tr").fadeOut();
+                                    $(element).parentsUntil(".load-update").fadeOut();
                                 }
                             
 }
@@ -84,7 +84,7 @@ mysqli_close($connect);
                             success:function(data){
                                 if(data == 1){
                                     alert("End Time Updated");
-                                    $(element).closest("tr").fadeOut();
+                                    $(element).parentsUntil(".load-update").fadeOut();
                                 }
                                 }
                                 
@@ -115,7 +115,7 @@ mysqli_close($connect);
 
                                 
                                     alert("Event Post update");
-                                    $(element).closest("tr").fadeOut();
+                                    $(element).parentsUntil(".load-update").fadeOut();
                                 }
                                 }
 
@@ -141,7 +141,7 @@ mysqli_close($connect);
 
                             
                                 alert("Recorded Video status Updated");
-                                $(element).closest("tr").fadeOut();
+                                $(element).parentsUntil(".load-update").fadeOut();
                             }
                             }
                             
