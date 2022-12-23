@@ -1,0 +1,121 @@
+	*{
+		margin: 0px;
+		padding: 0px;
+		
+	}
+	body{
+		background-color: rgba(0,0,0,0.1);
+	}
+
+table{
+	width: 90%;
+	border-spacing: 0px;
+	background-color: white;
+	margin-left: 5%;
+	
+	
+
+}
+
+table th {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	  font-weight: bold;
+	  padding: 10px;
+	  font-size: 16px;
+	  background-color:#1c3961;
+	  color: white;
+	}
+
+
+table td {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	  font-weight: bold;
+	  padding: 10px;
+	  font-size: 16px;
+	  
+
+	}
+
+	.fill_btn{
+		padding: 10px;
+		
+		background-color:#1c3961;
+		color: white;
+		border: none;
+		font-weight: bold;
+	}
+
+	.checklist_form_button{
+		padding: 10px;
+		
+		background-color:#4285F4;
+		color: white;
+		border: none;
+		font-weight: bold;
+		border-radius: 5px;
+	}
+
+	.edit_btn{
+
+		padding: 10px;
+		
+		background-color:#008CBA;
+		color: white;
+		border: none;
+		font-weight: bold;
+		border-radius: 5px;
+
+	}
+	.update_btn{
+
+		padding: 10px;
+		
+		background-color:#4CAF50;
+		color: white;
+		border: none;
+		font-weight: bold;
+		border-radius: 5px;
+
+	}
+
+	#date_for_update{
+		width: 90%;
+		height: 10%;
+	
+		margin-left: 5%;
+		display: flex;
+		justify-content: space-between;
+		
+
+	}
+	#date_for_update>div{
+		
+		width: 30%;
+		display: flex;
+		align-items: center;
+		font-weight: bold;
+		color: red;
+		
+
+	}
+
+
+	input{
+		width: 50%;
+		height: 30px;
+		margin-left: 5px;
+		padding: 5px;
+	}
+
+	#submit_date{
+		width: 20%;
+		height: 30px;
+		margin-left: 5px;
+		background-color:#1c3961;
+		color: white;
+	}
+	#serach_option{
+		margin-top: 20px;
+	}

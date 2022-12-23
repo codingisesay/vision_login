@@ -1,0 +1,83 @@
+	*{
+		margin: 0px;
+		padding: 0px;
+		
+	}
+	body{
+		background-color: rgba(0,0,0,0.1);
+	}
+	
+#side_btns{
+		width: 20%;
+		padding: 20px;
+		display: inline-block;}
+
+		#side_btns>button{
+		width: 100%;
+		padding: 4%;
+		margin: 4px;
+		background-color: #1c3961;
+		color: white;
+		font-weight: bold;
+		font-size: 16px;
+		border: none;
+	}
+
+	table{
+	width: 60%;
+	border-spacing: 0px;
+	background-color: white;
+	position: relative;
+	left: 30%;
+	bottom: 450px;
+
+}
+
+table th {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	  font-weight: bold;
+	  padding: 10px;
+	  font-size: 16px;
+	 
+	}
+
+
+table td {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	  font-weight: bold;
+	  padding: 10px;
+	  font-size: 16px;
+	}
+	table select{
+		width: 100%;
+		padding: 10px;
+	}
+	table input{
+		padding: 10px;
+		width: 100%;
+	}
+	#batch_list{
+		 width:100%; 
+		 
+		  background-color:;
+  border: 1px solid #4d6e87;
+  display: none;
+  
+	}
+	#batch_list ul{
+  list-style: none;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+
+}
+#batch_list ul li{
+  padding: 2px 10px;
+  cursor: pointer;
+}
+#batch_list ul li:hover{
+  background: #d0e4f4;
+}

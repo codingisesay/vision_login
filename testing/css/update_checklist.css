@@ -1,0 +1,66 @@
+	*{
+		margin: 0px;
+		padding: 0px;
+		
+	}
+	body{
+		background-color: rgba(0,0,0,0.1);
+	}
+	
+	.search_update_checklist{
+		width: 20%;
+		padding: 20px;
+		display: inline-block;
+		
+		
+	}
+	.search_update_checklist>label{
+		display: block;
+		font-size: 16px;
+		font-weight: bold;
+		margin: 2px;
+		color: red;
+	}
+	.search_update_checklist>select{
+		width: 100%;
+		padding: 4%;
+		margin: 2px;
+	}
+	.search_update_checklist>input{
+		width: 100%;
+		padding: 4%;
+		margin: 2px;
+	}
+	.search_update_checklist>button{
+		width: 100%;
+		padding: 4%;
+		margin: 4px;
+		background-color: #1c3961;
+		color: white;
+		font-weight: bold;
+		font-size: 16px;
+		border: none;
+	}
+		#update_record{
+			
+			background-color: white;
+			width: 60%;
+			position: relative;
+			left: 30%;
+            bottom: 120px;
+			border: 1px solid black;
+
+
+		}
+		table#update_record, th, td{
+			width: 60%;
+			border: 1px solid black;
+			border-collapse: collapse;
+			padding: 7px;
+		}
+	
+		
+
+
+	
+	
