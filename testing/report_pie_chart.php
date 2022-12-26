@@ -55,25 +55,29 @@ include('../database_connection.php');
         <link rel="stylesheet" href="css/generate_report.css">
 
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-      <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
+
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['TIME', 'DATA'],
-          ['09AM - 12PM',     <?php echo $i; ?>],
-          ['01PM - 04PM',      <?php echo $j; ?>],
-          ['05PM - 08PM',  <?php echo $k; ?>],
-         
+          ['Year', 'Sales', 'Expenses', 'Profit'],
+          ['2014', 1000, 400, 200],
+          ['2015', 1170, 460, 250],
+          ['2016', 660, 1120, 300],
+          ['2017', 1030, 540, 350]
         ]);
 
         var options = {
-          title: 'Class Timing Vs Interruptions',
-          is3D: true,
+          chart: {
+            title: 'Company Performance',
+            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+          }
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('charts'));
-        chart.draw(data, options);
+        var chart = new google.charts.Bar(document.getElementById('charts'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
       }
     </script>
 
