@@ -15,8 +15,8 @@ include('testing_functions.php');
                 <?php include('testing_navbar.php'); ?>
                 <?php 
                 include('../database_connection.php');
-                //$current_date = date("Y-m-d");
-                $current_date = "2022-08-20";
+                $current_date = date("Y-m-d");
+                //$current_date = "2022-08-20";
                 $new_date_format = date("d-m-Y", strtotime($current_date));
                 $query="SELECT * FROM checklist_record WHERE class_date = '$current_date'";
                 $run = mysqli_query($connect,$query);
