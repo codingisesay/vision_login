@@ -77,6 +77,12 @@
 	 display: inline-block;
 	 
 }
+lable{
+	position:relative; 
+	left:30px;
+	color: red;
+	font-size: 18px;
+}
 
 /*.select_date{
 	width: 40%;

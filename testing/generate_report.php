@@ -31,7 +31,22 @@ mysqli_close($connect);
                   <a href="#" id="class_timing_inst">Class Timing Vs Interruptions</a>
                   <a href="#" id="venue_vs_inst">Venue Vs Interruptions</a>
                   <a href="#" id="Issue_freq">Issue Vs Frequency</a>
-                  
+                  <lable>Select Issue Category</lable>
+                  <select style="position:relative; left:30px; width:70%; height:30px;" id="select_issue_cat">
+                    <option>Select Any One</option>
+                    <?php 
+                    include('testing_functions.php');
+                    $run = all_issue_category();
+                    while($data = mysqli_fetch_assoc($run)){?>
+                    <option id="issue_type"><?php echo $data['issue_name'];?></option>
+                    
+                    <?php
+
+                    }
+                    
+                    ?>
+                    
+                  </select>
                   
                   
                 </div>
@@ -88,7 +103,27 @@ mysqli_close($connect);
                       }
                     })
 
-                  })                  
+                  })
+                  $("#select_issue_cat").change(function(){
+                    var from_date = $("#from_date").val();
+                    var to_date = $("#to_date").val();
+                    var selected_cat = $(this).val();
+                    //console.log(from_date);
+                    //console.log(to_date);
+                    //console.log(selected_cat);
+                    $.ajax({
+                      url:"report_per_issue.php",
+                      type:"POST",
+                      data:{from_date:from_date,to_date:to_date,selected_cat:selected_cat},
+                      success:function(data){
+                        $("#charts").html(data);
+                      }
+                    })
+
+
+                  })
+                  
+                  
 
                  })
                 </script>

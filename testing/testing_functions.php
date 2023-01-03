@@ -95,6 +95,14 @@ function user_permission($user_id){
 
 }
 
+function all_issue_category(){
+  include('../database_connection.php');
+  $query = "SELECT * FROM issue_during_class";
+  return mysqli_query($connect,$query);
+  mysqli_close($connect);
+
+}
+
 	function download_checklist($checklist_id){
 	include('../database_connection.php');
 		$q="SELECT `checklist_record`.*, `user`.`user_name`,`remark`.* FROM `checklist_record` LEFT JOIN `user` ON `checklist_record`.`testing_mamber` = `user`.`user_id` LEFT JOIN `remark` ON `checklist_record`.`checklist_id` = `remark`.`checklist_id` WHERE checklist_record.checklist_id = '$checklist_id'";

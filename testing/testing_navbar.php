@@ -57,7 +57,7 @@
 				<div class="navbar_links">
 		         <ul>
 		         	<li><a href="index.php">Home</a></li>
-		         	<li><a href="update_checklist.php">Update Checklist</a></li>
+		         	<li><a href="monitor.php">Monitor</a></li>
 		         	<li><a href="generate_report.php">Generate Report</a></li>
 		         	<li><a href="view_checklist.php">View</a></li>
 		         	<li><a href="../logout.php">LogOut</a></li>

@@ -1,0 +1,41 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    
+}
+body{
+    background-color: rgba(0,0,0,0.1);
+}
+
+#head{
+    background-color: #1c3961;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}  
+table, td {
+    text-align: center;
+    border: 1px solid black;
+
+}
+.live_light{
+    width: 25px;
+    height: 25px;
+    background-color:lightgreen;
+    border-radius: 100%;
+    position: relative;
+    left: 40%;
+    box-shadow: 1px 1px 1px 1px lightgreen;
+    
+}
+.not_live_light{
+    width: 25px;
+    height: 25px;
+    background-color:red;
+    border-radius: 100%;
+    position: relative;
+    left: 40%;
+    
+}
+
+
