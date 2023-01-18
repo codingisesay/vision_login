@@ -44,6 +44,17 @@ include('testing_session.php');
                <td><input type='time' id='issue_end_time' ></td>
                </tr>
                <tr>
+               <td>Live class Stop?</td>
+               <td>
+               <select id='live_class_effect'>
+               <option value=''>Select Any One</option>
+               <option value='Yes'>Yes</option>
+               <option value='No'>No</option>
+               
+               </select>
+               </td>
+               </tr>
+               <tr>
                <th colspan='2'><button class='update_during_class' data-checklist_id='{$data['checklist_id']}'>Update</button></th>
                </tr>
             

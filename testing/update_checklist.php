@@ -181,12 +181,13 @@ mysqli_close($connect);
                     var select_issue_type = $("#select_issue_type").val();
                    var issue_detail_textarea = $("#issue_detail_textarea").val();
                    var issue_end_time = $("#issue_end_time").val();
-				   if(issue_start_time !== "" && select_issue_type !== "" && issue_detail_textarea !== "" && issue_end_time !== ""){
+                   var live_class_effect = $("#live_class_effect").val();
+				   if(issue_start_time !== "" && select_issue_type !== "" && issue_detail_textarea !== "" && issue_end_time !== "" && live_class_effect!== ""){
 					   
 					      $.ajax({
                     url:"update_during_class_table.php",
                     type:"POST",
-                    data:{id:checklist_id,issue_start:issue_start_time,select_issue:select_issue_type,issue_detail:issue_detail_textarea,issue_end:issue_end_time},
+                    data:{id:checklist_id,issue_start:issue_start_time,select_issue:select_issue_type,issue_detail:issue_detail_textarea,issue_end:issue_end_time,live_class_effect:live_class_effect},
                     success:function(data){
                     if(data == 1){
                         alert("Issue During Class updated");

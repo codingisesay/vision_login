@@ -46,9 +46,22 @@ mysqli_close($connect);
                     
                     ?>
                     
+                  </select><br><br>
+                  
+                  <lable>Issue By Class Room</lable>
+                  <select style="position:relative; left:30px; width:70%; height:30px;" id="select_classroom">
+                    <option>Select Any One</option>
+                    <?php 
+                    $run_venue = all_data_from_venue();
+                    while($data_venue = mysqli_fetch_assoc($run_venue)){?>
+                    <option id="classroom"><?php echo $data_venue['venue_name'];?></option>
+                    
+                    <?php
+
+                    }
+                    
+                    ?>
                   </select>
-                  
-                  
                 </div>
                 <div id="charts">
                 
@@ -115,6 +128,25 @@ mysqli_close($connect);
                       url:"report_per_issue.php",
                       type:"POST",
                       data:{from_date:from_date,to_date:to_date,selected_cat:selected_cat},
+                      success:function(data){
+                        $("#charts").html(data);
+                      }
+                    })
+
+
+                  })
+
+                  $("#select_classroom").change(function(){
+                    var from_date = $("#from_date").val();
+                    var to_date = $("#to_date").val();
+                    var cls = $(this).val();
+                    console.log(from_date);
+                    console.log(to_date);
+                    console.log(cls);
+                    $.ajax({
+                      url:"issue_by_classroom.php",
+                      type:"POST",
+                      data:{from_date:from_date,to_date:to_date,cls:cls},
                       success:function(data){
                         $("#charts").html(data);
                       }

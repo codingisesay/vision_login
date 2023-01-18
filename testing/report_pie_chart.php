@@ -17,7 +17,7 @@ include('testing_session.php');
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Time Slot', 'Total Class', 'Issue'],
+          ['Time Slot', 'Total Class', 'Issue','Percent'],
           <?php
 
  $from_date = $_POST['from_date'];
@@ -61,9 +61,12 @@ $all_cls++;
           }
 
   }
+  $percent = ($isuue_cls*100)/$all_cls;
+  $new_per = round($percent);
+
 
 ?>
-["<?php echo $time_slot_array[$time_slot_arr_str]; ?>", <?php echo $all_cls; ?>, <?php echo $isuue_cls; ?>],
+["<?php echo $time_slot_array[$time_slot_arr_str]; ?>", <?php echo $all_cls; ?>, <?php echo $isuue_cls; ?>,<?php echo $new_per; ?>],
 
 <?php
   

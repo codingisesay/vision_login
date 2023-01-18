@@ -84,36 +84,37 @@
 	}
 
 	#model{
-	background-color:rgba(0,0,0,0.8);
-	position: absolute;
-	width:100%;
-    height: auto;
-	z-index:100;
-	display:none;
-}
-#model-form{
-	background-color:white;
-	width:80%;
-	height: auto;
-	position:relative;
-	top:20px;
-	left:10%;
-	
-	border-radius:4px;	
-}
-#close-btn{
-	background-color:red;
-	color:white;
-	width:30px;
-	height:30px;
-	line-height:30px;
-	text-align:center;
-	border-radius:50%;
-	position:absolute;
-	top:-15px;
-	right:-15px;
-	cursor:pointer;
-}
+		background-color:rgba(0,0,0,0.8);
+		position: absolute;
+		width:100%;
+		height: auto;
+		z-index:100;
+		display:none;
+		top:0px;
+	}
+	#model-form{
+		background-color:white;
+		width:80%;
+		height: auto;
+		position:relative;
+		top:20px;
+		left:10%;
+		
+		border-radius:4px;	
+	}
+	#close-btn{
+		background-color:red;
+		color:white;
+		width:30px;
+		height:30px;
+		line-height:30px;
+		text-align:center;
+		border-radius:50%;
+		position:absolute;
+		top:-15px;
+		right:-15px;
+		cursor:pointer;
+	}
 #record_table{
 	width: 100%;
 	

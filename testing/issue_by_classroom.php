@@ -1,11 +1,12 @@
 <?php
 include('testing_session.php');
-
 include('testing_functions.php');
 //$from_date = '2022-08-20';
 //$to_date = '2022-09-20';
+//$cls = 'GMMR-HALL-03';
 $from_date = $_POST['from_date'];
 $to_date = $_POST['to_date'];
+$cls = $_POST['cls'];
 
 $run_issue = issue_data($from_date,$to_date);
 while($issue_data = mysqli_fetch_assoc($run_issue)){
@@ -18,19 +19,31 @@ while($issue_data = mysqli_fetch_assoc($run_issue)){
 }
 $total_issue_count = count($total_issue);
 
+
+
 $run_issue_catogry = all_issue_category();
 while($data_issue_catogry = mysqli_fetch_assoc($run_issue_catogry)){
 
   $issue_cat[] = array("issue id"=>$data_issue_catogry['issue_id'],"issue name"=>$data_issue_catogry['issue_name']);
 
 }
-
 $issue_cat_count = count($issue_cat);
+$classroom_issue = 0;
+for($tois=0; $tois < $total_issue_count; $tois++){
 
+    if($cls == $total_issue[$tois]['venue']){
+
+        $class_issue[]=array("checklist id"=>$total_issue[$tois]['checklist id'],"venue"=>$total_issue[$tois]['venue'],
+        "issue name"=>$total_issue[$tois]['issue name']);
+
+    }
+
+    
+
+}
+$class_issue_count = count($class_issue);
 
 ?>
-
-  
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
@@ -39,31 +52,35 @@ $issue_cat_count = count($issue_cat);
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
         ["Element", "Density", { role: "style" } ],
-        ["Total Issue", <?php echo $total_issue_count; ?>, "red"],
-
+        ["Total Issue", <?php echo $class_issue_count; ?>, "red"],
         <?php 
         for($cat = 0; $cat < $issue_cat_count; $cat++){
-          $issuee = 0;
-          for($total_issuee = 0; $total_issuee < $total_issue_count; $total_issuee++){
+
+            $spec_isue = 0;
         
-            if($issue_cat[$cat]['issue name'] == $total_issue[$total_issuee]['issue name']){
+            for($ci = 0; $ci < $class_issue_count; $ci++){
         
-              $issuee++;
+                if($issue_cat[$cat]['issue name'] == $class_issue[$ci]['issue name']){
         
-            }
+                    $spec_isue++;
         
-          }?>
-          ["<?php echo $issue_cat[$cat]['issue name'];?>",<?php echo $issuee; ?>,"#87CEEB"],
-          
-          <?php
+                }
         
-          
+                
+        
+            }?>
+            
+             ["<?php echo $issue_cat[$cat]['issue name']; ?>",<?php echo $spec_isue; ?>,"#87CEEB"],
+            
+            <?php
+        
+            
         
         }
         
+        
         ?>
         
-      
       ]);
 
       var view = new google.visualization.DataView(data);
@@ -75,7 +92,7 @@ $issue_cat_count = count($issue_cat);
                        2]);
 
       var options = {
-        title: "Issue Vs Frequency",
+        title: "Issue in <?php echo $cls; ?>",
         width: 900,
         height: 550,
         bar: {groupWidth: "95%"},

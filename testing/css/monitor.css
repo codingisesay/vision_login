@@ -19,23 +19,88 @@ table, td {
 
 }
 .live_light{
-    width: 25px;
-    height: 25px;
+    width: 100%;
+    height: 100%;
     background-color:lightgreen;
-    border-radius: 100%;
-    position: relative;
-    left: 40%;
-    box-shadow: 1px 1px 1px 1px lightgreen;
+    padding: 0%;
+  
+    
+   
     
 }
 .not_live_light{
-    width: 25px;
-    height: 25px;
+    width: 100%;
+    height: 100%;
     background-color:red;
-    border-radius: 100%;
-    position: relative;
-    left: 40%;
-    
+    padding: 0%;
+   
 }
+#model{
+	background-color:rgba(0,0,0,0.8);
+	position: absolute;
+	width:100%;
+    height: auto;
+	z-index:100;
+    top:0px;
+	display:none;
+}
+#model-form{
+	background-color:white;
+	width:80%;
+	height: auto;
+	position:relative;
+	top:20px;
+	left:10%;
+	
+	border-radius:4px;	
+}
+#close-btn{
+	background-color:red;
+	color:white;
+	width:30px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	border-radius:50%;
+	position:absolute;
+	top:-15px;
+	right:-15px;
+	cursor:pointer;
+}
+#record_table{
+	width: 100%;
+	
+	border: 1px solid black;
+	
+}
+#record_table th {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	  font-weight: bold;
+	  padding: 10px;
+	  font-size: 16px;
+	  background-color:#1c3961;
+	  color: white;
+      text-align: center;
+	}
 
+
+#record_table td {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	  font-weight: bold;
+	  padding: 10px;
+	  font-size: 16px;
+      text-align: left;
+	  
+
+	}
+	button{
+		width: 100%;
+		padding: 10%;
+		background-color: #1c3961;
+		color: white;
+	}
+
+  
 

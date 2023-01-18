@@ -103,6 +103,23 @@ function all_issue_category(){
 
 }
 
+function fetch_center_id_from_van($ven){
+    include('../database_connection.php');
+    $query="SELECT * FROM venues where venue_name = '$ven'";
+    return mysqli_query($connect,$query);
+    mysqli_close($connect);
+}
+
+function fetch_center_table_data(){
+
+  include('../database_connection.php');
+  $query="SELECT * FROM center_name";
+    return mysqli_query($connect,$query);
+    mysqli_close($connect);
+
+
+}
+
 	function download_checklist($checklist_id){
 	include('../database_connection.php');
 		$q="SELECT `checklist_record`.*, `user`.`user_name`,`remark`.* FROM `checklist_record` LEFT JOIN `user` ON `checklist_record`.`testing_mamber` = `user`.`user_id` LEFT JOIN `remark` ON `checklist_record`.`checklist_id` = `remark`.`checklist_id` WHERE checklist_record.checklist_id = '$checklist_id'";

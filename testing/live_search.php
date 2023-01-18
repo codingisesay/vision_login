@@ -13,7 +13,7 @@ $query = "SELECT user.user_name,checklist_record.testing_started_at,checklist_re
          FROM user
          INNER JOIN checklist_record
          ON user.user_id = checklist_record.testing_mamber
-         WHERE user.user_name LIKE '%$search_key%' AND checklist_record.class_date LIKE '%$current_date%'";
+         WHERE (checklist_record.class_id_from_lecture_list LIKE '%$search_key%' or user.user_name LIKE '%$search_key%')";
          $run = mysqli_query($connect,$query);
          $row = mysqli_num_rows($run);
          mysqli_close($connect);
@@ -90,7 +90,7 @@ $query = "SELECT user.user_name,checklist_record.testing_started_at,checklist_re
          FROM user
          INNER JOIN checklist_record
          ON user.user_id = checklist_record.testing_mamber
-         WHERE user.user_name LIKE '%$search_key%' AND checklist_record.class_date LIKE '%$selected_dated%'";
+         WHERE (checklist_record.class_id_from_lecture_list LIKE '%$search_key%' or user.user_name LIKE '%$search_key%') AND checklist_record.class_date LIKE '%$selected_dated%'";
          $run = mysqli_query($connect,$query);
          $row = mysqli_num_rows($run);
          mysqli_close($connect);

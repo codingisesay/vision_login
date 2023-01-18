@@ -93,8 +93,8 @@ $("#sub_date").on("click",function(){
 $("#search_term").on("keyup",function(){
                     var selected_dated = $("#input_date").val();
                     var search_key = $(this).val();
-                    console.log(search_key);
-                    console.log(selected_dated);
+                    //console.log(search_key);
+                    //console.log(selected_dated);
                     $.ajax({
                         url:"live_search_for_report.php",
                         type:"POST",
