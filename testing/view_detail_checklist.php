@@ -1,14 +1,34 @@
 <?php 
 include('testing_session.php');
+include('testing_functions.php');
+
+$class_id = $_POST['class_id'];
+
+$qu="SELECT checklist_id FROM checklist_record WHERE class_id_from_lecture_list = '$class_id'";
+$run_for_checklist_id = mysqli_query($connect,$qu);
+$data_checklist = mysqli_fetch_assoc($run_for_checklist_id);
+$checklist_id = $data_checklist['checklist_id'];
+
+$query = "SELECT checklist_record.monitor_by from checklist_record WHERE checklist_id = '$checklist_id'";
+$run = mysqli_query($connect,$query);
+$data = mysqli_fetch_assoc($run);
+$moni_by = $data['monitor_by'];
+$mon_run = data_from_user($moni_by);
+$data_mon_name = mysqli_fetch_assoc($mon_run);
+$monitor_name = $data_mon_name['user_name'];
 
 ?>
 
             <?php
-           $class_id = $_POST['class_id'];
+           
            $q="SELECT `checklist_record`.*, `user`.`user_name`,`remark`.* FROM `checklist_record` LEFT JOIN `user` ON `checklist_record`.`testing_mamber` = `user`.`user_id` LEFT JOIN `remark` ON `checklist_record`.`checklist_id` = `remark`.`checklist_id` WHERE checklist_record.class_id_from_lecture_list = '$class_id'";
            $run = mysqli_query($connect,$q);
            $row = mysqli_num_rows($run);
            $data = mysqli_fetch_assoc($run);
+
+
+
+
            $output="";
            $output = "<table width='100%'>
            <tr>
@@ -21,6 +41,17 @@ include('testing_session.php');
            <tr>
                 <td>Name of Testing Member</td>
                 <td>{$data['user_name']}</td>
+              </tr>
+              
+              
+
+
+              <tr>
+              <td>Monitor By</td>";
+             
+
+
+              $output.="<td>{$monitor_name}</td>
               </tr>
               <tr>
               <td>Class ID From Lecture List</td>
@@ -204,6 +235,17 @@ include('testing_session.php');
                 <td id='testing_query_remark_td'>{$data['testing_query_remark']}</td>
               </tr>
               <tr>
+              <td>Live Stream Started:</td>
+              <td>{$data['live_started_at']}</td>
+              </tr>
+              <tr>
+              <td>Checklist Submit Time:</td>
+              <td>{$data['submit_checklist_time']}</td>
+              </tr>
+               
+
+
+              <tr>
                 <td>Observation During Testing</td>
                 <td>{$data['observation_during_testing']}</td>
               </tr>
@@ -240,12 +282,10 @@ include('testing_session.php');
            <th colspan='2'>Issue During Class</th>
            </tr>";
 
-           $qu="SELECT checklist_id FROM checklist_record WHERE class_id_from_lecture_list = '$class_id'";
-           $run_for_checklist_id = mysqli_query($connect,$qu);
-           $data_checklist = mysqli_fetch_assoc($run_for_checklist_id);
-           $checklist_id = $data_checklist['checklist_id'];
+           
 
-           $query ="SELECT `issue_during_testing_remark`.*, `issue_during_class`.`issue_name` FROM `issue_during_testing_remark` LEFT JOIN `issue_during_class` ON `issue_during_testing_remark`.`issue_id` = `issue_during_class`.`issue_id` WHERE issue_during_testing_remark.checklist_id = '$checklist_id' ORDER BY issue_during_testing_remark_id ASC";
+
+           $query ="SELECT `issue_during_testing_remark`.*, `issue_during_class`.`issue_name`,user.user_name FROM `issue_during_testing_remark` LEFT JOIN `issue_during_class` ON `issue_during_testing_remark`.`issue_id` = `issue_during_class`.`issue_id` LEFT JOIN user on issue_during_testing_remark.user_id = user.user_id WHERE issue_during_testing_remark.checklist_id = '$checklist_id' ORDER BY issue_during_testing_remark_id ASC";
            $run_during_class = mysqli_query($connect,$query);
            $row_during_class = mysqli_num_rows($run_during_class);
            if($row_during_class > 0){
@@ -270,10 +310,20 @@ include('testing_session.php');
            <td>Time Lost</td>
            <td>{$data_issue_during_class['time_lost_during_class']} Mins</td>
            </tr>
+           
            <tr>
            <td>Observation</td>
            <td>{$data_issue_during_class['observation']}</td>
+           </tr>
+           <tr>
+           <td>Had Live classes Stopped?</td>
+           <td>{$data_issue_during_class['live_class_affect']}</td>
+           </tr>
+           <tr>
+           <td>Issue Update By</td>
+           <td>{$data_issue_during_class['user_name']}</td>
            </tr>";
+           
 
            }
         }else{

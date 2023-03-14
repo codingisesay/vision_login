@@ -77,7 +77,7 @@ $issue_cat_count = count($issue_cat);
       var options = {
         title: "Issue Vs Frequency",
         width: 900,
-        height: 550,
+        height: 280,
         bar: {groupWidth: "95%"},
         legend: { position: "none" },
       };

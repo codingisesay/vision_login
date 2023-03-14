@@ -1,13 +1,8 @@
 <?php 
 include('testing_session.php');
 
-
-
-
-
 ?>
 
-<head>
         <link rel="stylesheet" href="css/generate_report.css">
 
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -81,29 +76,19 @@ $all_cls++;
           
          
         ]);
-      
-
+       
         var options = {
           chart: {
             title: 'Class Timing Vs Interruptions',
             subtitle: '',
             
+            
            
           }
         };
-
+        
         var chart = new google.charts.Bar(document.getElementById('charts'));
 
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
     </script>
-
-
-
-                </head>
-                <body>
-                   
-              
-
-                </body>
-                

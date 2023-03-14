@@ -1,5 +1,6 @@
 <?php 
 include('testing_session.php');
+include('testing_functions.php');
 //mysqli_close($connect);
 
 ?>
@@ -35,6 +36,18 @@ include('testing_session.php');
               <tr>
                 <td>Name of Testing Member</td>
                 <td><?php echo $checklist_data['user_name']; ?></td>
+              </tr>
+              <tr>
+                <td>Monitor By</td>
+                <?php 
+                            $query = "SELECT checklist_record.monitor_by from checklist_record WHERE checklist_id = '$checklist_id'";
+                            $run = mysqli_query($connect,$query);
+                            $data = mysqli_fetch_assoc($run);
+                            $moni_by = $data['monitor_by'];
+                            $mon_run = data_from_user($moni_by);
+                            $data_mon_name = mysqli_fetch_assoc($mon_run);
+                            ?>
+                <td><?php echo $data_mon_name['user_name']; ?></td>
               </tr>
               <tr>
               <td>Class ID From Lecture List</td>
@@ -304,6 +317,20 @@ include('testing_session.php');
                 <td>Testing Query</td>
                 <td><?php echo $checklist_data['testing_query']; ?></td>
               </tr>
+
+              <tr>
+                <td>Live Stream Started:</td>
+                <td><?php echo $checklist_data['live_started_at'];?></td>
+              </tr>
+              <tr>
+                <td>Checklist Submit Time:</td>
+                <td><?php echo $checklist_data['submit_checklist_time'];?></td>
+              </tr>
+
+
+
+
+
               <?php if($checklist_data['testing_query_remark'] == ""){?>
                 <tr style="display: none;">
                 <?php

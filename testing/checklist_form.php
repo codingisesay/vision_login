@@ -1,6 +1,7 @@
 <?php 
 include('testing_session.php');
 include('testing_functions.php');
+$checklist_id = $_GET['checklist_id'];
 
 ?>
         <html>
@@ -14,7 +15,8 @@ include('testing_functions.php');
                 ?>
                 <div class="testing_mode">
                     <label>Testing Type</label>
-                    <input type="text" name="type_of_checklist" value="<?php echo $_GET['checklist_type']?>">
+                    <input type="text" name="type_of_checklist" value="<?php  echo $_GET['checklist_type']?>">
+                   
                 </div>
                 <div class="main_form">
                     <table border="1">
@@ -24,7 +26,23 @@ include('testing_functions.php');
                               $row = mysqli_num_rows($data_from_user_table);
                               $data_user = mysqli_fetch_assoc($data_from_user_table);
                              ?>
-                            <td><input type="text" value="<?php echo  $data_user['user_name']; ?>" name="testing_member" ></td>
+                             
+                            <td><input type="text" value="<?php echo $data_user['user_name']; ?>" name="testing_member" ></td>
+                            <input type="hidden" value="<?php echo $data_user['user_id']; ?>" name="testing_user_id">
+                        </tr>
+                        <tr>
+                            <td>Monitor By</td>
+                            <?php 
+                            $query = "SELECT checklist_record.monitor_by from checklist_record WHERE checklist_id = '$checklist_id'";
+                            $run = mysqli_query($connect,$query);
+                            $data = mysqli_fetch_assoc($run);
+                            $moni_by = $data['monitor_by'];
+                            $mon_run = data_from_user($moni_by);
+                            $data_mon_name = mysqli_fetch_assoc($mon_run);
+                            ?>
+                         
+                            <td><input type="text" value="<?php echo $data_mon_name['user_name']; ?>" name="monitor_by"></td>
+                            <input type="hidden" value="<?php echo $data_mon_name['user_id']; ?>" name="monitor_user_id">
                         </tr>
                         <!--<tr>
                             <td>Class ID From Lecture List</td>
@@ -404,6 +422,10 @@ include('testing_functions.php');
                             </select><textarea id="query_testing_remark" style="display: none; margin-top:10px;" placeholder="Remark" rows="2" cols="38" name="testing_query_remark" ></textarea></td>
                         </tr>
                         <tr>
+                            <td>Live Streaming Started</td>
+                            <td><input type="time" name="live_started_at" required></td>
+                        </tr>
+                        <tr>
                             <th colspan="2">Observation</th>
                         </tr>
                         <tr>
@@ -411,6 +433,7 @@ include('testing_functions.php');
                             <td><textarea rows="4" cols="40" name="observation_during_testing" required></textarea>
                             </td>
                         </tr>
+                        
                   
                          <tr>
                             <input type="hidden" name ='checklist_id' value="<?php echo $_GET['checklist_id']?>">

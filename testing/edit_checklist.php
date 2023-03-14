@@ -15,6 +15,7 @@ include('testing_functions.php');
            $run = mysqli_query($connect,$q);
            $row = mysqli_num_rows($run);
            $data = mysqli_fetch_assoc($run);
+           
           
            ?>
            <div class="main_form">
@@ -24,6 +25,7 @@ include('testing_functions.php');
               $query_for_cl_id = "SELECT checklist_id FROM checklist_record WHERE class_id_from_lecture_list = '$class_id'";
               $run_for_cl_id = mysqli_query($connect,$query_for_cl_id);
               $data_cl_id = mysqli_fetch_assoc($run_for_cl_id);
+              $checklist_id = $data_cl_id['checklist_id'];
               ?>
               <input type="hidden" name="checklist_id" value="<?php echo $data_cl_id['checklist_id']; ?>">
            <table width='100%'>
@@ -74,6 +76,37 @@ include('testing_functions.php');
 
                 	</td>
               </tr>
+
+              <tr>
+                <td>Monitor By</td>
+                <?php 
+                            $query = "SELECT checklist_record.monitor_by from checklist_record WHERE checklist_id = '$checklist_id'";
+                            $run = mysqli_query($connect,$query);
+                            $data_monitor_id = mysqli_fetch_assoc($run);
+                            $moni_by = $data_monitor_id['monitor_by'];
+                            $mon_run = data_from_user($moni_by);
+                            $data_mon_name = mysqli_fetch_assoc($mon_run);
+                            ?>
+                <td><select class="main_form_select" name="monitor_member">
+                    <option value="<?php echo $moni_by; ?>"><?php echo $data_mon_name['user_name'];  ?></option>
+                    <?php 
+                    $data_from_user_table = all_data_from_user_table();
+                    //$row = mysqli_num_rows($data_from_user_table);
+                    while($data_monitor_by_person = mysqli_fetch_assoc($data_from_user_table)){?>
+                    <option value="<?php echo $data_monitor_by_person['user_id']; ?>"><?php echo $data_monitor_by_person['user_name'];?></option>
+                    
+                    <?php
+
+                    }
+                    
+                    ?>
+                    
+
+                </select></td>
+              </tr>
+
+
+
               <tr>
               <td>Class ID From Lecture List</td>
               <td><input type="number" value="<?php echo $data['class_id_from_lecture_list'];?>" name="class_id_from_lecture_list"></td>

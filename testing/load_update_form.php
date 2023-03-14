@@ -17,6 +17,11 @@ include('testing_session.php');
             <th>Class Id : 
             {$data['class_id_from_lecture_list']}</th>
             </tr>";
+            $str_batch = $data['batch'];
+            $bat = str_replace(",","<br>*","$str_batch");
+            $output.="<tr>
+            <th>Batch:<br> *{$bat}</th>
+            <tr>";
 
            if($data['class_started'] == ''){
             $output.="<tr style='display:block;'>";

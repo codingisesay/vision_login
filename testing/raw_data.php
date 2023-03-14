@@ -7,7 +7,7 @@ if(isset($_POST['download_raw_data'])){
     $query = "Select checklist_record.checklist_id, checklist_record.class_date, checklist_record.venue,
     checklist_record.batch, checklist_record.time_slot, user.user_name,issue_during_class.issue_name,
     issue_during_testing_remark.issue_start_time,issue_during_testing_remark.issue_end_time,
-    issue_during_testing_remark.observation,issue_during_testing_remark.time_lost_during_class from checklist_record
+    issue_during_testing_remark.observation,issue_during_testing_remark.time_lost_during_class,issue_during_testing_remark.live_class_affect,issue_during_testing_remark.user_id,user.user_name from checklist_record
     inner join user on checklist_record.testing_mamber = user.user_id inner join issue_during_testing_remark on 
     checklist_record.checklist_id = issue_during_testing_remark.checklist_id 
     inner join issue_during_class on issue_during_testing_remark.issue_id = issue_during_class.issue_id 
@@ -32,8 +32,10 @@ if(isset($_POST['download_raw_data'])){
         <th>Issue Type</th>
         <th>Issue Started At</th>
         <th>Issue End At</th>
+        <th>Live Class Affect</th>
         <th>Observation</th>
         <th>Time Lost</th>
+        <th>Updated By</th>
      </tr>
     <?php
     while($data = mysqli_fetch_assoc($run)){?>
@@ -46,8 +48,10 @@ if(isset($_POST['download_raw_data'])){
         <td><?php echo $data['issue_name']; ?></td>
         <td><?php echo $data['issue_start_time']; ?></td>
         <td><?php echo $data['issue_end_time']; ?></td>
+        <td><?php echo $data['live_class_affect']; ?></td>
         <td><?php echo $data['observation']; ?></td>
         <td><?php echo $data['time_lost_during_class']; ?></td>
+        <td><?php echo $data['user_name'];?></td>
     </tr>
     </table>
     

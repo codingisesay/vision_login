@@ -11,6 +11,9 @@ if(isset($_POST['submit'])){
 	$select_time_slot = mysqli_real_escape_string($connect,$_POST['select_time_slot']);
 	$checklist_type = mysqli_real_escape_string($connect,$_POST['checklist_type']);
 	$testing_member = mysqli_real_escape_string($connect,$_POST['testing_member']);
+
+  $monitor_member = mysqli_real_escape_string($connect,$_POST['monitor_member']);
+
 	$class_id_from_lecture_list = mysqli_real_escape_string($connect,$_POST['class_id_from_lecture_list']);
 	$testing_started_at = mysqli_real_escape_string($connect,$_POST['testing_started_at']);
 	$testing_end_at = mysqli_real_escape_string($connect,$_POST['testing_end_at']);
@@ -79,9 +82,9 @@ if(isset($_POST['submit'])){
 
 	
 //for create class
-if($testing_started_at == "" && isset($class_date,$select_time_slot,$checklist_type,$testing_member,$class_id_from_lecture_list,$insert_venue,$insert_batch)){
+if($testing_started_at == "" && isset($class_date,$select_time_slot,$checklist_type,$testing_member,$monitor_member,$class_id_from_lecture_list,$insert_venue,$insert_batch)){
 
-	$query_u = "UPDATE checklist_record SET class_date = '$class_date',checklist_type = '$checklist_type', testing_mamber = '$testing_member',class_id_from_lecture_list = '$class_id_from_lecture_list', time_slot = '$select_time_slot',venue = '$insert_venue', batch = '$insert_batch' WHERE checklist_id = '$checklist_id'";
+	$query_u = "UPDATE checklist_record SET class_date = '$class_date', checklist_type = '$checklist_type', testing_mamber = '$testing_member', monitor_by = '$monitor_member', class_id_from_lecture_list = '$class_id_from_lecture_list', time_slot = '$select_time_slot',venue = '$insert_venue', batch = '$insert_batch' WHERE checklist_id = '$checklist_id'";
 	$run_update = mysqli_query($connect,$query_u);
 	if($run_update){?>
 
@@ -105,13 +108,14 @@ if($testing_started_at == "" && isset($class_date,$select_time_slot,$checklist_t
 	}
 
 // for observation_during_testing
-}else if($testing_started_at !== "" && $class_started == "" && $class_end == "" && $event_post == "" && $recorded_video == "" && $recoreded_video_uploaded_time == "" && isset($checklist_id,$class_date,$select_time_slot,$checklist_type,$testing_member,$class_id_from_lecture_list,$testing_started_at,$testing_end_at,$insert_venue,$insert_batch,$subject_name_number,$insert_faculty,$batch_coordinator_avail,$insert_batch_coordinator,$insert_camera_man,$tech_support_person_avail,$tech_support_person,$board_pen_marker,$display_synopsis,$insert_camera_focous,$insert_camera_battery,$insert_memory_card,$insert_memory_card_remark,$insert_audio_live,$insert_audio_live_remark,$insert_mic_testing,$insert_video_pixxel,$insert_internet_line,$insert_internet_speed,$insert_remote_system_laptop,$remote_system_ipad,$remote_ipad_remark,$insert_prompter,$convey_to_bcoo,$handout,$handout_remark,$next_class_update,$query_testing,$observation_during_testing)){
+}else if($testing_started_at !== "" && $class_started == "" && $class_end == "" && $event_post == "" && $recorded_video == "" && $recoreded_video_uploaded_time == "" && isset($checklist_id,$class_date,$select_time_slot,$checklist_type,$testing_member,$monitor_member,$class_id_from_lecture_list,$testing_started_at,$testing_end_at,$insert_venue,$insert_batch,$subject_name_number,$insert_faculty,$batch_coordinator_avail,$insert_batch_coordinator,$insert_camera_man,$tech_support_person_avail,$tech_support_person,$board_pen_marker,$display_synopsis,$insert_camera_focous,$insert_camera_battery,$insert_memory_card,$insert_memory_card_remark,$insert_audio_live,$insert_audio_live_remark,$insert_mic_testing,$insert_video_pixxel,$insert_internet_line,$insert_internet_speed,$insert_remote_system_laptop,$remote_system_ipad,$remote_ipad_remark,$insert_prompter,$convey_to_bcoo,$handout,$handout_remark,$next_class_update,$query_testing,$observation_during_testing)){
 
 $query = "UPDATE checklist_record SET
        class_date = '$class_date',
        time_slot = '$select_time_slot',
        checklist_type = '$checklist_type',
        testing_mamber ='$testing_member',
+       monitor_by = '$monitor_member',
        class_id_from_lecture_list = '$class_id_from_lecture_list',
        testing_started_at = '$testing_started_at',
        testing_end_at = '$testing_end_at',
@@ -244,13 +248,14 @@ if($run_after_testing){
 
 
 // for class started
-}else if($testing_started_at !== "" && $class_started !== "" && $class_end == "" && $event_post == "" && $recorded_video == "" && $recoreded_video_uploaded_time == "" && isset($checklist_id,$class_date,$select_time_slot,$checklist_type,$testing_member,$class_id_from_lecture_list,$testing_started_at,$testing_end_at,$insert_venue,$insert_batch,$subject_name_number,$insert_faculty,$batch_coordinator_avail,$insert_batch_coordinator,$insert_camera_man,$tech_support_person_avail,$tech_support_person,$board_pen_marker,$display_synopsis,$insert_camera_focous,$insert_camera_battery,$insert_memory_card,$insert_memory_card_remark,$insert_audio_live,$insert_audio_live_remark,$insert_mic_testing,$insert_video_pixxel,$insert_internet_line,$insert_internet_speed,$insert_remote_system_laptop,$remote_system_ipad,$remote_ipad_remark,$insert_prompter,$convey_to_bcoo,$handout,$handout_remark,$next_class_update,$query_testing,$observation_during_testing,$class_started)){
+}else if($testing_started_at !== "" && $class_started !== "" && $class_end == "" && $event_post == "" && $recorded_video == "" && $recoreded_video_uploaded_time == "" && isset($checklist_id,$class_date,$select_time_slot,$checklist_type,$testing_member,$monitor_member,$class_id_from_lecture_list,$testing_started_at,$testing_end_at,$insert_venue,$insert_batch,$subject_name_number,$insert_faculty,$batch_coordinator_avail,$insert_batch_coordinator,$insert_camera_man,$tech_support_person_avail,$tech_support_person,$board_pen_marker,$display_synopsis,$insert_camera_focous,$insert_camera_battery,$insert_memory_card,$insert_memory_card_remark,$insert_audio_live,$insert_audio_live_remark,$insert_mic_testing,$insert_video_pixxel,$insert_internet_line,$insert_internet_speed,$insert_remote_system_laptop,$remote_system_ipad,$remote_ipad_remark,$insert_prompter,$convey_to_bcoo,$handout,$handout_remark,$next_class_update,$query_testing,$observation_during_testing,$class_started)){
 	
 	$query = "UPDATE checklist_record SET
        class_date = '$class_date',
        time_slot = '$select_time_slot',
        checklist_type = '$checklist_type',
        testing_mamber ='$testing_member',
+       monitor_by = '$monitor_member',
        class_id_from_lecture_list = '$class_id_from_lecture_list',
        testing_started_at = '$testing_started_at',
        testing_end_at = '$testing_end_at',
@@ -365,13 +370,14 @@ if($run_after_testing){
 
 //for class end update
 
-}else if($testing_started_at !== "" && $class_started !== "" && $class_end !== "" && $event_post == "" && $recorded_video == "" && $recoreded_video_uploaded_time == "" && isset($checklist_id,$class_date,$select_time_slot,$checklist_type,$testing_member,$class_id_from_lecture_list,$testing_started_at,$testing_end_at,$insert_venue,$insert_batch,$subject_name_number,$insert_faculty,$batch_coordinator_avail,$insert_batch_coordinator,$insert_camera_man,$tech_support_person_avail,$tech_support_person,$board_pen_marker,$display_synopsis,$insert_camera_focous,$insert_camera_battery,$insert_memory_card,$insert_memory_card_remark,$insert_audio_live,$insert_audio_live_remark,$insert_mic_testing,$insert_video_pixxel,$insert_internet_line,$insert_internet_speed,$insert_remote_system_laptop,$remote_system_ipad,$remote_ipad_remark,$insert_prompter,$convey_to_bcoo,$handout,$handout_remark,$next_class_update,$query_testing,$observation_during_testing,$class_started,$class_end)){
+}else if($testing_started_at !== "" && $class_started !== "" && $class_end !== "" && $event_post == "" && $recorded_video == "" && $recoreded_video_uploaded_time == "" && isset($checklist_id,$class_date,$select_time_slot,$checklist_type,$testing_member,$monitor_member,$class_id_from_lecture_list,$testing_started_at,$testing_end_at,$insert_venue,$insert_batch,$subject_name_number,$insert_faculty,$batch_coordinator_avail,$insert_batch_coordinator,$insert_camera_man,$tech_support_person_avail,$tech_support_person,$board_pen_marker,$display_synopsis,$insert_camera_focous,$insert_camera_battery,$insert_memory_card,$insert_memory_card_remark,$insert_audio_live,$insert_audio_live_remark,$insert_mic_testing,$insert_video_pixxel,$insert_internet_line,$insert_internet_speed,$insert_remote_system_laptop,$remote_system_ipad,$remote_ipad_remark,$insert_prompter,$convey_to_bcoo,$handout,$handout_remark,$next_class_update,$query_testing,$observation_during_testing,$class_started,$class_end)){
 	
 	$query = "UPDATE checklist_record SET
        class_date = '$class_date',
        time_slot = '$select_time_slot',
        checklist_type = '$checklist_type',
        testing_mamber ='$testing_member',
+       monitor_by = '$monitor_member',
        class_id_from_lecture_list = '$class_id_from_lecture_list',
        testing_started_at = '$testing_started_at',
        testing_end_at = '$testing_end_at',
@@ -485,13 +491,14 @@ if($run_after_testing){
 }
 
 //event post option
-}else if($testing_started_at !== "" && $class_started !== "" && $class_end !== "" && $event_post !== "" && $recorded_video == "" && $recoreded_video_uploaded_time == "" && isset($checklist_id,$class_date,$select_time_slot,$checklist_type,$testing_member,$class_id_from_lecture_list,$testing_started_at,$testing_end_at,$insert_venue,$insert_batch,$subject_name_number,$insert_faculty,$batch_coordinator_avail,$insert_batch_coordinator,$insert_camera_man,$tech_support_person_avail,$tech_support_person,$board_pen_marker,$display_synopsis,$insert_camera_focous,$insert_camera_battery,$insert_memory_card,$insert_memory_card_remark,$insert_audio_live,$insert_audio_live_remark,$insert_mic_testing,$insert_video_pixxel,$insert_internet_line,$insert_internet_speed,$insert_remote_system_laptop,$remote_system_ipad,$remote_ipad_remark,$insert_prompter,$convey_to_bcoo,$handout,$handout_remark,$next_class_update,$query_testing,$observation_during_testing,$class_started,$class_end,$event_post)){
+}else if($testing_started_at !== "" && $class_started !== "" && $class_end !== "" && $event_post !== "" && $recorded_video == "" && $recoreded_video_uploaded_time == "" && isset($checklist_id,$class_date,$select_time_slot,$checklist_type,$testing_member,$monitor_member,$class_id_from_lecture_list,$testing_started_at,$testing_end_at,$insert_venue,$insert_batch,$subject_name_number,$insert_faculty,$batch_coordinator_avail,$insert_batch_coordinator,$insert_camera_man,$tech_support_person_avail,$tech_support_person,$board_pen_marker,$display_synopsis,$insert_camera_focous,$insert_camera_battery,$insert_memory_card,$insert_memory_card_remark,$insert_audio_live,$insert_audio_live_remark,$insert_mic_testing,$insert_video_pixxel,$insert_internet_line,$insert_internet_speed,$insert_remote_system_laptop,$remote_system_ipad,$remote_ipad_remark,$insert_prompter,$convey_to_bcoo,$handout,$handout_remark,$next_class_update,$query_testing,$observation_during_testing,$class_started,$class_end,$event_post)){
 	
 	$query = "UPDATE checklist_record SET
        class_date = '$class_date',
        time_slot = '$select_time_slot',
        checklist_type = '$checklist_type',
        testing_mamber ='$testing_member',
+       monitor_by = '$monitor_member',
        class_id_from_lecture_list = '$class_id_from_lecture_list',
        testing_started_at = '$testing_started_at',
        testing_end_at = '$testing_end_at',
@@ -607,13 +614,14 @@ if($run_after_testing){
 
 //recorded video update
 
-}else if($testing_started_at !== "" && $class_started !== "" && $class_end !== "" && $event_post !== "" && $recorded_video !== "" && $recoreded_video_uploaded_time !== "" && isset($checklist_id,$class_date,$select_time_slot,$checklist_type,$testing_member,$class_id_from_lecture_list,$testing_started_at,$testing_end_at,$insert_venue,$insert_batch,$subject_name_number,$insert_faculty,$batch_coordinator_avail,$insert_batch_coordinator,$insert_camera_man,$tech_support_person_avail,$tech_support_person,$board_pen_marker,$display_synopsis,$insert_camera_focous,$insert_camera_battery,$insert_memory_card,$insert_memory_card_remark,$insert_audio_live,$insert_audio_live_remark,$insert_mic_testing,$insert_video_pixxel,$insert_internet_line,$insert_internet_speed,$insert_remote_system_laptop,$remote_system_ipad,$remote_ipad_remark,$insert_prompter,$convey_to_bcoo,$handout,$handout_remark,$next_class_update,$query_testing,$observation_during_testing,$class_started,$class_end,$event_post,$recorded_video)){
+}else if($testing_started_at !== "" && $class_started !== "" && $class_end !== "" && $event_post !== "" && $recorded_video !== "" && $recoreded_video_uploaded_time !== "" && isset($checklist_id,$class_date,$select_time_slot,$checklist_type,$testing_member,$monitor_member,$class_id_from_lecture_list,$testing_started_at,$testing_end_at,$insert_venue,$insert_batch,$subject_name_number,$insert_faculty,$batch_coordinator_avail,$insert_batch_coordinator,$insert_camera_man,$tech_support_person_avail,$tech_support_person,$board_pen_marker,$display_synopsis,$insert_camera_focous,$insert_camera_battery,$insert_memory_card,$insert_memory_card_remark,$insert_audio_live,$insert_audio_live_remark,$insert_mic_testing,$insert_video_pixxel,$insert_internet_line,$insert_internet_speed,$insert_remote_system_laptop,$remote_system_ipad,$remote_ipad_remark,$insert_prompter,$convey_to_bcoo,$handout,$handout_remark,$next_class_update,$query_testing,$observation_during_testing,$class_started,$class_end,$event_post,$recorded_video)){
 	
 	$query = "UPDATE checklist_record SET
        class_date = '$class_date',
        time_slot = '$select_time_slot',
        checklist_type = '$checklist_type',
        testing_mamber ='$testing_member',
+       monitor_by = '$monitor_member',
        class_id_from_lecture_list = '$class_id_from_lecture_list',
        testing_started_at = '$testing_started_at',
        testing_end_at = '$testing_end_at',

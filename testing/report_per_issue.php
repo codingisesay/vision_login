@@ -57,7 +57,6 @@ include('testing_session.php');
                 
             }
         
-           
         
         }
         
@@ -78,7 +77,7 @@ include('testing_session.php');
       var options = {
         title: "<?php echo $selected_cat." from ".$newfrom_date." to ".$newto_date; ?>",
         width: 900,
-        height: 550,
+        height: 280,
         bar: {groupWidth: "80%"},
         legend: { position: "none" },
       };

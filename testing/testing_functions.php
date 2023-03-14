@@ -65,7 +65,7 @@ function all_data_from_user_table(){
 
 function issue_data($from_date,$to_date){
   include('../database_connection.php');
-  $query = "Select checklist_record.checklist_id, checklist_record.class_date, checklist_record.venue,
+  $query = "Select checklist_record.class_id_from_lecture_list,checklist_record.checklist_id, checklist_record.class_date, checklist_record.venue,
    checklist_record.batch, checklist_record.time_slot, user.user_name,issue_during_class.issue_name,
    issue_during_testing_remark.issue_start_time,issue_during_testing_remark.issue_end_time,
    issue_during_testing_remark.observation,issue_during_testing_remark.time_lost_during_class from checklist_record
@@ -110,6 +110,14 @@ function fetch_center_id_from_van($ven){
     mysqli_close($connect);
 }
 
+function center_name($center_id){
+  include('../database_connection.php');
+  $query = "SELECT * FROM center_name WHERE center_id = $center_id";
+  return $run = mysqli_query($connect,$query);
+  mysqli_close($connect);
+
+}
+
 function fetch_center_table_data(){
 
   include('../database_connection.php');
@@ -117,6 +125,24 @@ function fetch_center_table_data(){
     return mysqli_query($connect,$query);
     mysqli_close($connect);
 
+
+}
+
+function fetch_user_name_by_id($monitor_id){
+  include('../database_connection.php');
+  $query = "SELECT * FROM user WHERE user_id = '$monitor_id'";
+   $run = mysqli_query($connect,$query);
+   $data = mysqli_fetch_assoc($run);
+   return $user_name = $data['user_name'];
+   
+
+}
+
+function fetch_center_name(){
+  include('../database_connection.php');
+  $query = "SELECT * FROM center_name";
+  return $run = mysqli_query($connect,$query);
+  mysqli_close($connect);
 
 }
 
@@ -156,6 +182,18 @@ function fetch_center_table_data(){
               <tr>
                 <td>Name of Testing Member</td>
                 <td><?php echo $checklist_data['user_name']; ?></td>
+              </tr>
+              <tr>
+                <td>Monitor By</td>
+                <?php 
+                            $query = "SELECT checklist_record.monitor_by from checklist_record WHERE checklist_id = '$checklist_id'";
+                            $run = mysqli_query($connect,$query);
+                            $data = mysqli_fetch_assoc($run);
+                            $moni_by = $data['monitor_by'];
+                            $mon_run = data_from_user($moni_by);
+                            $data_mon_name = mysqli_fetch_assoc($mon_run);
+                            ?>
+                <td><?php echo $data_mon_name['user_name']; ?></td>
               </tr>
               <tr>
               <td>Class ID From Lecture List</td>
@@ -339,6 +377,14 @@ function fetch_center_table_data(){
                <tr id="testing_query_remark_tr">
                 <td>Testing Query Remark</td>
                 <td id="testing_query_remark_td"><?php echo $checklist_data['testing_query_remark']; ?></td>
+              </tr>
+              <tr>
+                <td>Live Stream Started:</td>
+                <td><?php echo $checklist_data['live_started_at'];?></td>
+              </tr>
+              <tr>
+                <td>Checklist Submit Time:</td>
+                <td><?php echo $checklist_data['submit_checklist_time'];?></td>
               </tr>
               <tr>
                 <td>Observation During Testing</td>

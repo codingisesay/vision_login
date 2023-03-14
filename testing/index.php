@@ -19,6 +19,12 @@ $data_user_role = mysqli_fetch_assoc($run);
 <html>
 <head>
     <link rel="stylesheet" href="css/testing_home.css">
+    <link rel="stylesheet" href="css/generate_report.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
 </head>
 <body>
     <?php include('testing_navbar.php');?>

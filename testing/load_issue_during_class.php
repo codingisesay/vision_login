@@ -6,7 +6,7 @@ include('testing_session.php');
 
             <?php 
             $class_id = $_POST['class_id_from_admin'];
-            $query_for_checklist_id = "SELECT checklist_id,class_id_from_lecture_list FROM checklist_record WHERE class_id_from_lecture_list='$class_id'";
+            $query_for_checklist_id = "SELECT checklist_id,class_id_from_lecture_list,batch FROM checklist_record WHERE class_id_from_lecture_list='$class_id'";
             $run_query = mysqli_query($connect,$query_for_checklist_id);
             $row_query = mysqli_num_rows($run_query);
             $data = mysqli_fetch_assoc($run_query);
@@ -18,6 +18,11 @@ include('testing_session.php');
                <tr>
                <th colspan='2'>Class Id : 
                {$data['class_id_from_lecture_list']}</th>
+               </tr>";
+               $str_batch = $data['batch'];
+               $bat = str_replace(",","<br>*","$str_batch");
+               $output.="<tr>
+               <th colspan='2'>Batch:<br> *{$bat}</th>
                </tr>
                <tr>
                <td>Issue Starting Time</td>

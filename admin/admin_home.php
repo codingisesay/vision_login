@@ -66,6 +66,8 @@ if(!isset($_SESSION['admin_id'])){
 
 					var testing_mamber = $("#testing_mamber").val();
 
+					var monitor_mamber = $("#monitor_mamber").val();
+
 					if(select_checklist_type == "Class"){
 
 						var select_batch = $("#select_batch").val();
@@ -81,12 +83,12 @@ if(!isset($_SESSION['admin_id'])){
 
 					var select_venue = $("#select_venue").val();
 
-					if(class_date != "" & select_checklist_type != "" & class_id != "" & testing_mamber != "" &select_batch != "" & batch != "" & select_time_slot != "" & select_venue != ""){
+					if(class_date != "" & select_checklist_type != "" & class_id != "" & testing_mamber != "" & monitor_mamber != "" &select_batch != "" & batch != "" & select_time_slot != "" & select_venue != ""){
 				
 					$.ajax({
 						url:"create_checklist.php",
 						type:"POST",
-						data:{class_date:class_date,select_checklist_type:select_checklist_type,class_id:class_id,testing_mamber:testing_mamber,batch:batch,select_time_slot:select_time_slot,select_venue:select_venue},
+						data:{class_date:class_date,select_checklist_type:select_checklist_type,class_id:class_id,testing_mamber:testing_mamber,monitor_mamber:monitor_mamber,batch:batch,select_time_slot:select_time_slot,select_venue:select_venue},
 						success:function(data){
 							if(data == 1){
 								alert("Checklist Created!");

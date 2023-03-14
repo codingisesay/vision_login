@@ -11,9 +11,6 @@ table{
 	width: 90%;
 	border-spacing: 0px;
 	background-color: white;
-	margin-left: 5%;
-	
-	
 
 }
 
@@ -83,8 +80,6 @@ table td {
 	#date_for_update{
 		width: 90%;
 		height: 10%;
-	
-		margin-left: 5%;
 		display: flex;
 		justify-content: space-between;
 		
@@ -105,17 +100,25 @@ table td {
 	input{
 		width: 50%;
 		height: 30px;
-		margin-left: 5px;
+		position: relative;
+		left: 10%;
 		padding: 5px;
 	}
 
 	#submit_date{
 		width: 20%;
 		height: 30px;
-		margin-left: 5px;
+		position: relative;
+		left: 12%;
 		background-color:#1c3961;
 		color: white;
 	}
 	#serach_option{
 		margin-top: 20px;
+	}
+	.checklist_btn{
+		background-color: #1c3961;
+		border-color: #1c3961;
+		color: white;
+		
 	}

@@ -94,7 +94,7 @@ $class_issue_count = count($class_issue);
       var options = {
         title: "Issue in <?php echo $cls; ?>",
         width: 900,
-        height: 550,
+        height: 280,
         bar: {groupWidth: "95%"},
         legend: { position: "none" },
       };

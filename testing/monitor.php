@@ -28,7 +28,7 @@ include('testing_functions.php');
 
             $date_class[] = array("Class Id" =>$data['class_id_from_lecture_list'],"Date"=>$data['class_date'],"Checklist Type" => $data['checklist_type'],
             "Venue" => $data['venue'],"Batch" => $data['batch'],"Testing Strated" => $data['testing_started_at'],"Time Slot" =>$data['time_slot'],"class End" =>$data['class_end_at'],
-            "user name" => $data['user_name'],"subject" => $data['subject'],"submit_checklist" => $data['submit_checklist_time']);
+            "user name" => $data['user_name'],"subject" => $data['subject'],"submit_checklist" => $data['submit_checklist_time'],"live_started_at"=>$data['live_started_at'],"Monitor_By"=>$data['monitor_by']);
            
 
             //$date_class[] = array($data['class_id_from_lecture_list'],$data['class_date'],$data['checklist_type'],$data['venue'],$data['batch'],$data['testing_started_at'],$data['time_slot']);
@@ -58,7 +58,7 @@ include('testing_functions.php');
                 ?>
                 
 
-<div class="container">
+<div class="container-fluid">
   <h2>Total Classes : <?php echo $row; ?> <br>Date: <?php echo $new_date_format;?></h2>
 
   <div class="panel-group" id="accordion">
@@ -72,12 +72,13 @@ include('testing_functions.php');
         <div class="panel-body">
             <table class="table table-striped">
                 <tr id="head">
-                    <td>Class Type</td>
+                    <td>Class ID</td>
                     <td>Testing Person</td>
+                    <td>Monitor By</td>
                     <td>Batch</td>
                     <td>Subject</td>
                     <td>Venue</td>
-                    <td>Live status</td>
+                    <td>Live Started</td>
                     <td>Class End</td>
                 </tr>
                 <tr>
@@ -92,6 +93,8 @@ include('testing_functions.php');
                     <td><a  style="cursor: pointer; text-decoration: none;" class='view_detail_checklist' data-class_id="<?php echo $date_class[$rw]['Class Id']?>"><?php echo $date_class[$rw]['Class Id'];?></a>
                      </td>
                     <td><?php echo $date_class[$rw]['user name']; ?></td>
+
+                    <td><?php echo fetch_user_name_by_id($date_class[$rw]['Monitor_By']);?></td>
                     <td><?php 
                     $str_batch = str_replace(",","<br>*",$date_class[$rw]['Batch']);
                     
@@ -100,20 +103,20 @@ include('testing_functions.php');
                     <td ><?php echo $date_class[$rw]['Venue']; ?></td>
                      <?php
                      if($date_class[$rw]['Testing Strated'] == '' && $date_class[$rw]['class End'] == ''){?>
-                     <td style="background-color:red;"><?php echo $date_class[$rw]['submit_checklist']; ?></td>
+                     <td style="background-color:red;"><?php echo $date_class[$rw]['live_started_at']; ?></td>
                     <td style="background-color:red;"><?php echo $date_class[$rw]['class End']; ?></td>
                      
                      <?php
 
                      }elseif($date_class[$rw]['Testing Strated'] != '' && $date_class[$rw]['class End'] == ''){?>
-                     <td style="background-color:lightgreen;"><?php echo $date_class[$rw]['submit_checklist']; ?></td>
+                     <td style="background-color:lightgreen;"><?php echo $date_class[$rw]['live_started_at']; ?></td>
                     <td style="background-color:red;"><?php echo $date_class[$rw]['class End']; ?></td>
                      
                      <?php
                         
                         
                      }elseif($date_class[$rw]['Testing Strated'] != '' && $date_class[$rw]['class End'] != ''){?>
-                     <td style="background-color:red;"><?php echo $date_class[$rw]['submit_checklist']; ?></td>
+                     <td style="background-color:red;"><?php echo $date_class[$rw]['live_started_at']; ?></td>
                     <td style="background-color:lightgreen;"><?php echo $date_class[$rw]['class End']; ?></td>
                      
                      <?php
@@ -151,12 +154,13 @@ include('testing_functions.php');
       <div id="collapse2" class="panel-collapse collapse">
         <div class="panel-body"><table class="table table-striped">
                 <tr id="head">
-                <td>Class Type</td>
+                <td>Class ID</td>
                     <td>Testing Person</td>
+                    <td>Monitor By</td>
                     <td>Batch</td>
                     <td>Subject</td>
                     <td>Venue</td>
-                    <td>Live status</td>
+                    <td>Live Started</td>
                     <td>Class End</td>
                 </tr>
                 <tr>
@@ -171,6 +175,7 @@ include('testing_functions.php');
                          <td><a  style="cursor: pointer; text-decoration: none;" class='view_detail_checklist' data-class_id="<?php echo $date_class[$rw]['Class Id']?>"><?php echo $date_class[$rw]['Class Id'];?></a>
                      </td>
                     <td><?php echo $date_class[$rw]['user name']; ?></td>
+                    <td><?php echo fetch_user_name_by_id($date_class[$rw]['Monitor_By']);?></td>
                     <td><?php 
                     $str_batch = str_replace(",","<br>*",$date_class[$rw]['Batch']);
                     
@@ -179,20 +184,20 @@ include('testing_functions.php');
                     <td><?php echo $date_class[$rw]['Venue']; ?></td>
                      <?php
                      if($date_class[$rw]['Testing Strated'] == '' && $date_class[$rw]['class End'] == ''){?>
-                        <td style="background-color:red;"><?php echo $date_class[$rw]['submit_checklist']; ?></td>
+                        <td style="background-color:red;"><?php echo $date_class[$rw]['live_started_at']; ?></td>
                        <td style="background-color:red;"><?php echo $date_class[$rw]['class End']; ?></td>
                         
                         <?php
    
                         }elseif($date_class[$rw]['Testing Strated'] != '' && $date_class[$rw]['class End'] == ''){?>
-                        <td style="background-color:lightgreen;"><?php echo $date_class[$rw]['submit_checklist']; ?></td>
+                        <td style="background-color:lightgreen;"><?php echo $date_class[$rw]['live_started_at']; ?></td>
                        <td style="background-color:red;"><?php echo $date_class[$rw]['class End']; ?></td>
                         
                         <?php
                            
                            
                         }elseif($date_class[$rw]['Testing Strated'] != '' && $date_class[$rw]['class End'] != ''){?>
-                        <td style="background-color:red;"><?php echo $date_class[$rw]['submit_checklist']; ?></td>
+                        <td style="background-color:red;"><?php echo $date_class[$rw]['live_started_at']; ?></td>
                        <td style="background-color:lightgreen;"><?php echo $date_class[$rw]['class End']; ?></td>
                      
                      <?php
@@ -230,12 +235,13 @@ include('testing_functions.php');
       <div id="collapse3" class="panel-collapse collapse">
         <div class="panel-body"><table class="table table-striped">
                 <tr id="head">
-                <td>Class Type</td>
+                <td>Class ID</td>
                     <td>Testing Person</td>
+                    <td>Monitor By</td>
                     <td>Batch</td>
                     <td>Subject</td>
                     <td>Venue</td>
-                    <td>Live status</td>
+                    <td>Live Started</td>
                     <td>Class End</td>
                 </tr>
                 <tr>
@@ -250,6 +256,7 @@ include('testing_functions.php');
                          <td><a  style="cursor: pointer; text-decoration: none;" class='view_detail_checklist' data-class_id="<?php echo $date_class[$rw]['Class Id']?>"><?php echo $date_class[$rw]['Class Id'];?></a>
                      </td>
                     <td><?php echo $date_class[$rw]['user name']; ?></td>
+                    <td><?php echo fetch_user_name_by_id($date_class[$rw]['Monitor_By']);?></td>
                     <td><?php 
                     $str_batch = str_replace(",","<br>*",$date_class[$rw]['Batch']);
                     
@@ -258,20 +265,20 @@ include('testing_functions.php');
                     <td><?php echo $date_class[$rw]['Venue']; ?></td>
                      <?php
                      if($date_class[$rw]['Testing Strated'] == '' && $date_class[$rw]['class End'] == ''){?>
-                        <td style="background-color:red;"><?php echo $date_class[$rw]['submit_checklist']; ?></td>
+                        <td style="background-color:red;"><?php echo $date_class[$rw]['live_started_at']; ?></td>
                        <td style="background-color:red;"><?php echo $date_class[$rw]['class End']; ?></td>
                         
                         <?php
    
                         }elseif($date_class[$rw]['Testing Strated'] != '' && $date_class[$rw]['class End'] == ''){?>
-                        <td style="background-color:lightgreen;"><?php echo $date_class[$rw]['submit_checklist']; ?></td>
+                        <td style="background-color:lightgreen;"><?php echo $date_class[$rw]['live_started_at']; ?></td>
                        <td style="background-color:red;"><?php echo $date_class[$rw]['class End']; ?></td>
                         
                         <?php
                            
                            
                         }elseif($date_class[$rw]['Testing Strated'] != '' && $date_class[$rw]['class End'] != ''){?>
-                        <td style="background-color:red;"><?php echo $date_class[$rw]['submit_checklist']; ?></td>
+                        <td style="background-color:red;"><?php echo $date_class[$rw]['live_started_at']; ?></td>
                        <td style="background-color:lightgreen;"><?php echo $date_class[$rw]['class End']; ?></td>
                      
                      <?php
