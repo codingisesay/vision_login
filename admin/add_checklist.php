@@ -31,7 +31,7 @@ $output = '<table>
 			<td><label>Testing Member</label></td>
 			<td><select id="testing_mamber" required>
 				<option value="">Select Any One</option>';
-				$query = "Select * FROM user WHERE department_id = '1' AND user_role = '1' ORDER BY user_name ASC";
+				$query = "Select * FROM user WHERE user_role = '1' ORDER BY user_name ASC";
                 $run = mysqli_query($connect,$query);
                 $rows = mysqli_num_rows($run);
                 while($data = mysqli_fetch_assoc($run)){
@@ -47,7 +47,7 @@ $output = '<table>
 			<td><label>Monitor By</label></td>
 			<td><select id="monitor_mamber" required>
 				<option value="">Select Any One</option>';
-				$query = "Select * FROM user WHERE department_id = '1' AND user_role = '1' ORDER BY user_name ASC";
+				$query = "Select * FROM user WHERE user_role = '1' ORDER BY user_name ASC";
                 $run = mysqli_query($connect,$query);
                 $rows = mysqli_num_rows($run);
                 while($data = mysqli_fetch_assoc($run)){

@@ -52,7 +52,7 @@
 
 			<div class="navigation">
 				<div class="logo_img">
-		<img src="image/logo.png" alt="logo" width="220" height="70">
+		<a href="../module_assign.php"><img src="image/logo.png" alt="logo" width="220" height="70"></a>
 				</div>
 				<div class="navbar_links">
 		         <ul>

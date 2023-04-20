@@ -4,12 +4,12 @@ include('testing_session.php');
 ?>
             <?php 
 
-            $checklist_id = $_POST['id'];
-            $issue_start_time = $_POST['issue_start'];
-            $selected_issue = $_POST['select_issue'];
-            $issue_detail_remark = $_POST['issue_detail'];
-            $issue_end = $_POST['issue_end'];
-            $live_class_effect = $_POST['live_class_effect'];
+            $checklist_id = mysqli_real_escape_string($connect,$_POST['id']);
+            $issue_start_time = mysqli_real_escape_string($connect,$_POST['issue_start']);
+            $selected_issue = mysqli_real_escape_string($connect,$_POST['select_issue']);
+            $issue_detail_remark = mysqli_real_escape_string($connect,$_POST['issue_detail']);
+            $issue_end = mysqli_real_escape_string($connect,$_POST['issue_end']);
+            $live_class_effect = mysqli_real_escape_string($connect,$_POST['live_class_effect']);
             $lost_time = (strtotime($issue_end) - strtotime($issue_start_time))/60;
             
 

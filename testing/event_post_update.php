@@ -6,9 +6,9 @@ include('testing_session.php');
 
             if(isset($_POST['id']) && isset($_POST['select_eventpost'])){
 
-            $checklist_id = $_POST['id'];
-            $select_event_post = $_POST['select_eventpost'];
-            $event_post_remark = $_POST['event_postremark'];
+            $checklist_id = mysqli_real_escape_string($connect,$_POST['id']);
+            $select_event_post = mysqli_real_escape_string($connect,$_POST['select_eventpost']);
+            $event_post_remark = mysqli_real_escape_string($connect,$_POST['event_postremark']);
 
             if($select_event_post == "Yes"){
 

@@ -6,10 +6,10 @@ include('testing_session.php');
 
            if(isset($_POST['id']) && isset($_POST['recorded_video_status']) && isset($_POST['recorded_video_time'])){
 
-            $checklist_id = $_POST['id'];
-            $recorded_video_status = $_POST['recorded_video_status'];
-            $recorded_video_time = $_POST['recorded_video_time'];
-            $recorded_remark = $_POST['recorded_remark'];
+            $checklist_id = mysqli_real_escape_string($connect,$_POST['id']);
+            $recorded_video_status = mysqli_real_escape_string($connect,$_POST['recorded_video_status']);
+            $recorded_video_time = mysqli_real_escape_string($connect,$_POST['recorded_video_time']);
+            $recorded_remark = mysqli_real_escape_string($connect,$_POST['recorded_remark']);
 
             if($recorded_video_status == "Uploaded"){
 

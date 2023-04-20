@@ -6,15 +6,13 @@ if(isset($_POST['submit']) & !empty($_POST['filed_username']) & !empty($_POST['f
 	//data from user table
 	$filed_username = mysqli_real_escape_string($connect,$_POST['filed_username']);
 	 $filed_password=md5($_POST['filed_password']);
-	 $q="SELECT user.user_id, user.user_name,user.user_mobile,user.user_mail_id,user.user_password,user.number_of_device_access,department.department_name
+	 $q="SELECT user.user_id, user.user_name,user.user_mobile,user.user_mail_id,user.user_password,user.number_of_device_access
          FROM user
-         INNER JOIN department
-         ON user.department_id = department.department_id
          WHERE user_mail_id='$filed_username' AND user_password ='$filed_password'";
 	 $result=mysqli_query($connect,$q); 
 	 $row=mysqli_num_rows($result);
 	 $data=mysqli_fetch_assoc($result);
-	 $department_name = $data['department_name'];
+	 //$department_name = $data['department_name'];
 	 $user_id=$data['user_id']; 
 	 $number_of_device_access = $data['number_of_device_access'];
 	 
@@ -44,7 +42,7 @@ if(isset($_POST['submit']) & !empty($_POST['filed_username']) & !empty($_POST['f
               WHERE device_cookie='$device_cookie' AND user_id = '$user_id'";
 		      $result = mysqli_query($connect,$q);
 			   mysqli_close($connect);
-		      department_redirect($department_name);
+		      department_redirect();
 			  
 		 }else{
 			 mysqli_close($connect);
@@ -65,7 +63,7 @@ if(isset($_POST['submit']) & !empty($_POST['filed_username']) & !empty($_POST['f
 		         $result = mysqli_query($connect,$q);
 		         if($result == true){
 					 mysqli_close($connect);
-			department_redirect($department_name);
+			department_redirect();
 			 
 		 }
 				 }else{
@@ -99,7 +97,7 @@ if(isset($_POST['submit']) & !empty($_POST['filed_username']) & !empty($_POST['f
 		 //checking insert in log table
 		 if($res == true){
 			  mysqli_close($connect);
-			department_redirect($department_name);
+			department_redirect();
 			
 		 }
 		}else{
@@ -135,5 +133,5 @@ if(isset($_POST['submit']) & !empty($_POST['filed_username']) & !empty($_POST['f
      
 }
 
-mysql_close($connect);
+mysqli_close($connect);
 ?>

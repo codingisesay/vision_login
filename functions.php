@@ -18,12 +18,10 @@ function specific_device_from_login_log($device_cookie,$user_id){
 	return $specific_device_from_login_log = mysqli_query($connect,$q);
 	mysqli_close($connect);
 }
-function department_redirect($department){
-	if($department == "Testing"){
-		header("location:testing/index.php");
-	}elseif($department == "complaints"){
-		header("location:complaint/complaint_home.php");
-	}
+function department_redirect(){
+
+	header("location:module_assign.php");
+
 	
 }
 
