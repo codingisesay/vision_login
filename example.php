@@ -1,5 +1,5 @@
 <?php 
 
-echo $password = md5("9501330629");
+echo md5("class@1234");
 
 ?>

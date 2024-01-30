@@ -8,7 +8,7 @@ if(!isset($_SESSION['admin_id'])){
 }
 	?>
 	<?php 
-	$subject = $_POST['subject'];
+	$subject = trim(mysqli_real_escape_string($connect,$_POST['subject']));
 
 $query_insert_subject = "INSERT INTO 	subjects (subject_name) VALUES ('$subject')";
 $run_query_insert_subject = mysqli_query($connect,$query_insert_subject);

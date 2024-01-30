@@ -10,7 +10,12 @@ $data = mysqli_fetch_assoc($row_of_specific_device);
 
 if(!isset($_SESSION['id']) || !isset($_COOKIE['PHPSESSID']) || $data['session_status'] == "inactive"){
 
-         page_redirect('../index.php');
+  $q="UPDATE login_log
+  SET session_status='inactive'
+  WHERE device_cookie='$device_cookie' OR user_id = '$user_id'";
+  $result = mysqli_query($connect,$q);
+
+   page_redirect('../index.php');
 }
 ?>
 
@@ -133,6 +138,7 @@ input[type=submit]:hover {
         <option value="">Select Any One</option>
         <option>Our end</option>
         <option>Student End</option>
+        <option>General Enquiry</option>
     </select>
    <label for="country">Status Of Complaint</label><br>
      <select name="country" id="status_of_complaint" required>
@@ -205,6 +211,7 @@ $("#complaint_form").submit(function(e){
         location.replace("index.php");
      }else{
         alert("Complaint Not Inserted");
+        location.replace("../index.php");
      }
     }
   })

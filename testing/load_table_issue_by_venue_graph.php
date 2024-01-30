@@ -18,6 +18,7 @@ include('testing_functions.php');
 //$from_date = '2022-08-20';
 //$to_date = '2022-09-20';
 //$venue = "GMMR";
+//load_table_issue_by_venue_graph.php
 $from_date = $_POST['from_date'];
 $to_date = $_POST['to_date'];
 $venue = $_POST['center_name'];
@@ -35,9 +36,19 @@ while($data_run_query_for_venue_classrooms = mysqli_fetch_assoc($run_query_for_v
 
 }
 
+
 $count_classroom_on_venue = count($classroom_on_venue);
+
 $run_issue = issue_data($from_date,$to_date);
 $all_class_data = all_class_from_date($from_date,$to_date);
+
+while($total_classes = mysqli_fetch_assoc($all_class_data)){
+
+    $total_cls[] = array("tot venue" => $total_classes['venue']);
+
+}
+$total = count($total_cls);
+
 
 $run_issue = issue_data($from_date,$to_date);
 while($data_issue = mysqli_fetch_assoc($run_issue)){
@@ -48,7 +59,56 @@ $issue_arr[] = array("class id"=>$data_issue['class_id_from_lecture_list'],"Clas
 
 }
 
-$array_count_issue_arr = count($issue_arr);
+$array_count_issue_arr = count($issue_arr);?>
+
+<div class="container-fluid">
+    <table class="table table-bordered">
+    <thead style="background-color: #1c3961; color:white; font-weight: bolder;">
+      <tr>
+        <td>CLASSROOM</td>
+        <td>TOTAL CLASS</td>
+        <td>ISSUE</td>
+        
+      </tr>
+      </thead>
+      <?php 
+      for($cen = 0; $cen < $count_classroom_on_venue; $cen++){
+        $totl = 0;
+        $isscl = 0;
+        for($total_cl = 0; $total_cl < $total; $total_cl++){
+          if($classroom_on_venue[$cen]['Classroom Name'] == $total_cls[$total_cl]['tot venue']){
+            $totl++;
+          }
+
+
+        }
+        for($iscl = 0; $iscl < $array_count_issue_arr; $iscl++){
+       if($classroom_on_venue[$cen]['Classroom Name'] == $issue_arr[$iscl]['Venue']){
+        $isscl++;
+       }
+
+        }
+ ?>
+      
+      <tr>
+        <td><?php echo $classroom_on_venue[$cen]['Classroom Name']; ?></td>
+        <td><?php  echo $totl; ?></td>
+        <td><?php  echo $isscl; ?></td>
+        
+      </tr>
+      
+      <?php
+
+      }
+      
+      
+      ?>
+     
+    
+    </table>
+  </div>
+
+<?php
 
 for($classroom_on_venue_ar = 0; $classroom_on_venue_ar < $count_classroom_on_venue; $classroom_on_venue_ar++){?>
 <div class="container-fluid">

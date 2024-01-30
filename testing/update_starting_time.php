@@ -7,7 +7,7 @@ include('testing_session.php');
             if(isset($_POST['id']) && isset($_POST['starting_time'])){
 
             $checklist_id = mysqli_real_escape_string($connect,$_POST['id']);
-            $starting_time = mysqli_real_escape_string($connect,$_POST['starting_time']);
+            $starting_time = trim(mysqli_real_escape_string($connect,$_POST['starting_time']));
 
            $q = "UPDATE checklist_record SET class_started='$starting_time' WHERE checklist_id ='$checklist_id'";
            $run_update_starting_time = mysqli_query($connect,$q);

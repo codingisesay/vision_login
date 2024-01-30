@@ -101,7 +101,7 @@ $output = '<table>
 			$output.='</select></td>
 			</tr>
 		<tr>
-		<th colspan="2"><button class="insert_btn">Create</button></th>
+		<th colspan="2"><button class="btn btn-success insert_btn">Create</button></th>
 		</tr>
 
 </table>';

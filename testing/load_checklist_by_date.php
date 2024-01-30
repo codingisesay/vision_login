@@ -153,6 +153,10 @@ include('testing_functions.php');
                $testing_data[] = array("checklist id"=>$data['checklist_id'],"Class ID" => $data['class_id_from_lecture_list'],"Date" => $data['class_date'],"Testing Person" => $data['user_name'],
            "Monitor By" => fetch_user_name_by_id($data['monitor_by']),"Testing Type" => $data['checklist_type'],"Batch" => $data['batch'],"Time Slot" => $data['time_slot'],"Venue" => $data['venue'],"class started" => $data['testing_started_at']);
             }
+
+            //echo "<pre>";
+            //print_r($testing_data);
+
             $testing_data_count = count($testing_data);
 
             $time_slot_array = array("09 am - 12 pm","01 pm - 04 pm","05 pm - 08 pm");

@@ -8,7 +8,7 @@ if(!isset($_SESSION['admin_id'])){
 }
 	?>
 	<?php 
-	$tech_person = $_POST['tech_person'];
+	$tech_person =trim(mysqli_real_escape_string($connect,$_POST['tech_person']));
 
 $query_insert_venue = "INSERT INTO tech_support_person (Name) VALUES ('$tech_person')";
 $run_query_insert_venue = mysqli_query($connect,$query_insert_venue);

@@ -57,7 +57,7 @@
 				<div class="navbar_links">
 		         <ul>
 		         	<li><a href="index.php">Home</a></li>
-		         
+					 <li><a href="active_pending.php">Active/Pending</a></li>
 		         	<li><a href="complaint_dashboard.php">Complaint Dashboard</a></li>
 		         	<li><a href="../logout.php">LogOut</a></li>
 		         </ul>

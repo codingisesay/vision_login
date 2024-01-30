@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include('testing_session.php');
 include('testing_functions.php');
 //$from_date = '2022-08-20';
@@ -93,8 +94,8 @@ $class_issue_count = count($class_issue);
 
       var options = {
         title: "Issue in <?php echo $cls; ?>",
-        width: 900,
-        height: 280,
+        // width: 900,
+        // height: 280,
         bar: {groupWidth: "95%"},
         legend: { position: "none" },
       };

@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include('testing_session.php');
 
 include('testing_functions.php');
@@ -76,8 +77,8 @@ $issue_cat_count = count($issue_cat);
 
       var options = {
         title: "Issue Vs Frequency",
-        width: 900,
-        height: 280,
+        // width: 1200,
+        // height: 400,
         bar: {groupWidth: "95%"},
         legend: { position: "none" },
       };

@@ -14,24 +14,19 @@ if(!isset($_SESSION['id']) || !isset($_COOKIE['PHPSESSID']) || $data['session_st
 }
 ?>
 <?php 
-$to_date = $_POST['to_date'];
+include('complaint_functions.php');
 $from_date = $_POST['from_date'];
+$to_date = $_POST['to_date'];
+// $from_date = "2023-12-22";
+// $to_date = "2023-12-20";
 
-$query="SELECT complaint_record.student_reg_no,complaint_record.complain_text,complaint_record.resolution,
-complaint_record.current_date,complaint_record.issue_at,complaint_category.complaint_category_name,
-complaint_sub_category.complaint_sub_category_name,mode_of_complaint.mode_name,complaint_status.complaint_status_name,
-user.user_name FROM complaint_record 
-LEFT JOIN complaint_category ON complaint_record.complaint_category = complaint_category.complaint_category_id 
-LEFT JOIN complaint_sub_category ON complaint_record.complaint_sub_category = complaint_sub_category.complaint_sub_category_id 
-LEFT JOIN mode_of_complaint ON complaint_record.mode_of_complaint = mode_of_complaint.mode_id 
-LEFT JOIN complaint_status ON complaint_record.status = complaint_status.complaint_status_id 
-LEFT JOIN user ON complaint_record.updated_by = user.user_id WHERE complaint_record.current_date between '$to_date' and '$from_date'  ORDER BY complaint_record.complaint_record_id ASC";
+$run = fetch_complaint_data_from_to_date($from_date,$to_date,);
 
-$run = mysqli_query($connect,$query);
+
 while($data = mysqli_fetch_assoc($run)){
 
     $complaint_record[] = array("Student registraion No" => $data['student_reg_no'],"Complaint Text" => $data['complain_text'],"resolution" =>$data['resolution'],
-"Date" => $data['current_date'], "Issue at" => $data['issue_at'],"complaint category name" => $data['complaint_category_name'],"complaint sub category name" => $data['complaint_sub_category_name'],
+"Date" => $data['currentdate'], "Issue at" => $data['issue_at'],"complaint category name" => $data['complaint_category_name'],"complaint sub category name" => $data['complaint_sub_category_name'],
 "Mode Name" => $data['mode_name'],"complaint status name" => $data['complaint_status_name'],"user name" => $data['user_name']); 
 
 }

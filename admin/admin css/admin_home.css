@@ -1,13 +1,15 @@
-	*{
+	/* *{
 		margin: 0px;
 		padding: 0px;
 		
 	}
 	body{
 		background-color: rgba(0,0,0,0.1);
-	}
+	} */
+
+
 	
-#side_btns{
+/* #side_btns{
 		width: 20%;
 		padding: 20px;
 		display: inline-block;}
@@ -23,15 +25,17 @@
 		border: none;
 	}
 
-	table{
-	width: 60%;
-	border-spacing: 0px;
-	background-color: white;
-	position: relative;
-	left: 30%;
-	bottom: 450px;
+		table{
+		width: 60%;
+		border-spacing: 0px;
+		background-color: white;
+		position: relative;
+		left: 30%;
+		bottom: 550px;
+	
+	} */
 
-}
+
 
 table th {
 	  border: 1px solid black;
@@ -39,6 +43,7 @@ table th {
 	  font-weight: bold;
 	  padding: 10px;
 	  font-size: 16px;
+	  text-align: center;
 	 
 	}
 
@@ -80,4 +85,4 @@ table td {
 }
 #batch_list ul li:hover{
   background: #d0e4f4;
-}
+} 

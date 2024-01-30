@@ -24,7 +24,7 @@ while($data_total_complaints = mysqli_fetch_assoc($run_total_complaint)){
     $total_complaint[] = array("Student Reg No" => $data_total_complaints['student_reg_no'],"Complaint Text" => $data_total_complaints['complain_text'],
 "Mode Name" => $data_total_complaints['mode_name'], "Complaint Received" => $data_total_complaints['complaint_received'],"Complaint Category Name" => $data_total_complaints['complaint_category_name'],
 "Complaint Sub Category Name" => $data_total_complaints['complaint_sub_category_name'],"Resolution" => $data_total_complaints['resolution'],"Issue At" => $data_total_complaints['issue_at'],
-"Complaint Status Name" => $data_total_complaints['complaint_status_name'], "Current Date" => $data_total_complaints['current_date'], "Current Date" =>$data_total_complaints['current_date'],
+"Complaint Status Name" => $data_total_complaints['complaint_status_name'], "Current Date" => $data_total_complaints['currentdate'],
 "User Name" => $data_total_complaints['user_name']);
 }
 $array_count_total_issue = count($total_complaint);
@@ -46,7 +46,7 @@ for($cato = 0; $cato < $com_cat_array_count; $cato++){?>
           <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $cato; ?>"><?php echo $com_cat_array[$cato]['Name']; ?></a>
         </h4>
       </div>
-      <div id="collapse<?php echo $cato; ?>" class="panel-collapse collapse in">
+      <div id="collapse<?php echo $cato; ?>" class="panel-collapse collapse">
         <div class="panel-body">
             <table class="table table-striped" border="1px solid black">
                 <tr>

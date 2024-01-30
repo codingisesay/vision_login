@@ -11,25 +11,53 @@ if(!isset($_SESSION['admin_id'])){
 
 	?>
 	<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 		<link rel="stylesheet" href="admin css/admin_home.css">
 		<link rel="stylesheet" href="chosen/chosen.min.css">
 		
 	</head>
 	<body>
-		<div id="side_btns">
-			<button type="submit" id="create_checklist">Create Checklist</button>
-			<button type="submit" id="inser_venue">Insert Venue</button>
-			<button type="submit" id="inser_batch">Insert Batch</button>
-			<button type="submit" id="insert_subject">Subject</button>
-			<button type="submit" id="insert_faculty">Faculty</button>
-			<button type="submit" id="insert_batch_coordinator">Batch Coordinator</button>
+		
+		<div id="side_btns" class="container-fluid" style="padding-top:10px;">
+		    <button type="button" class="btn btn-info" id="create_checklist">Create Checklist</button>
+			<button type="button" class="btn btn-info" id="create_offline_checklist">Offline Checklist</button>
+			<button type="button" class="btn btn-info" id="inser_venue">Insert Venue</button>
+			<button type="button" class="btn btn-info" id="inser_batch">Insert Batch</button>
+			<button type="button" class="btn btn-info" id="insert_subject">Subject</button>
+			<button type="button" class="btn btn-info" id="insert_faculty">Faculty</button>
+			<button type="button" class="btn btn-info" id="insert_batch_coordinator">Batch Coordinator</button>
+			<button type="button" class="btn btn-info" id="insert_camera_man">Camera Man</button>
+			<button type="button" class="btn btn-info" id="insert_lnternet_line">Internet Line</button>
+			<button type="button" class="btn btn-info" id="insert_tech_support_person">Tech Person</button>
+			<a href="delete_checklist.php" type="button" class="btn btn-danger">Delete</a>
+			<a href="admin_logout.php" type="button" class="btn btn-info">LogOut</a>
+			<!-- <button type="submit" id="create_checklist">Create Checklist</button> -->
+			
+			<!-- <button type="submit" id="create_offline_checklist">Offline Checklist</button> -->
+			
+			
+			<!-- <button type="submit" id="inser_venue">Insert Venue</button> -->
+			
+			<!-- <button type="submit" id="inser_batch">Insert Batch</button> -->
+			
+			<!-- <button type="submit" id="insert_subject">Subject</button> -->
+			
+			<!-- <button type="submit" id="insert_faculty">Faculty</button> -->
+			<!-- <button type="submit" id="insert_batch_coordinator">Batch Coordinator</button> -->
+			<!-- <button type="button" class="btn btn-info">Button</button>
 			<button type="submit" id="insert_camera_man">Camera Man</button>
 			<button type="submit" id="insert_lnternet_line">Internet Line</button>
 			<button type="submit" id="insert_tech_support_person">Tech Person</button>
-			<button type="submit"><a href="admin_logout.php" style="color: white; text-decoration:none">LogOut</a></button>
+			<a href="deleteChecklist.php">Delete</a>
+			<button type="submit"><a href="admin_logout.php" style="color: white; text-decoration:none">LogOut</a></button> -->
 			
-		</div>
-		<div id="show_data">
+		</div><br>
+		<div id="show_data" class="container">
        <table id="t1" border="1px" width="100%" cellspacing="0">
 
        </table>
@@ -110,6 +138,78 @@ if(!isset($_SESSION['admin_id'])){
 				}
 				})
 
+				$("#create_offline_checklist").on("click",function(){
+
+					$.ajax({
+						url:"addOfflineChecklist.php",
+						type:"POST",
+						success:function(data){
+							$("#t1").html(data);
+							$('#offline_select_batch').chosen();
+						}
+					})
+
+				})
+
+				$(document).on("click",".offline_insert_btn",function(){
+
+				    var offline_class_date = $("#offline_class_date").val();
+					var offline_class_id = $("#offline_class_id").val();
+					var offline_select_batch = $("#offline_select_batch").val();
+
+                    var batch = offline_select_batch.toString();
+
+					var offline_subject_name = $("#offline_subject_name").val();
+					var offline_class_number = $("#offline_subject_number").val();
+					var offline_coordinator_name = $('#offline_coordinator_name').val();
+					var offline_faculty_name = $('#offline_faculty_name').val();
+					var offline_time_slot = $('#offline_time_slot').val();
+					var offline_class_time = $("#offline_class_time").val();
+					var offline_select_venue = $("#offline_select_venue").val();
+
+					if(offline_class_date != "" && offline_class_id != "" && offline_select_batch != "" && batch != "" && offline_subject_name != "" && offline_class_number != "" && offline_coordinator_name != "" && offline_faculty_name != "" && offline_time_slot != "" && offline_class_time != "" && offline_select_venue != ""){
+
+					$.ajax({
+						url:"insert_offline_checklist.php",
+						type:"POST",
+						data:{offline_class_date:offline_class_date,offline_class_id:offline_class_id,batch:batch,offline_subject_name:offline_subject_name,
+							offline_class_number:offline_class_number,offline_coordinator_name:offline_coordinator_name,offline_faculty_name:offline_faculty_name,offline_time_slot:offline_time_slot,
+							offline_class_time:offline_class_time,offline_select_venue:offline_select_venue},
+						success:function(data){
+
+							if(data == 1){
+								alert("Offline Checklist Created!");
+								cerate_checklist_form();
+							}else{
+								alert('This class ID is already Created');
+								cerate_checklist_form();
+							}
+
+						}
+
+					})
+				}else{
+
+					alert("All field are required");
+
+				}
+					
+					
+
+					// console.log(offline_class_date);
+					// console.log(offline_class_id);
+					// console.log(batch);
+					// console.log(offline_subject_name);
+					// console.log(offline_class_number);
+					// console.log(offline_coordinator_name);
+					// console.log(offline_faculty_name);
+					// console.log(offline_time_slot);
+					// console.log(offline_class_time);
+					// console.log(offline_select_venue);
+
+
+				})
+
 				$("#inser_venue").on("click",function(){
 					$.ajax({
 						url:"load_inser_venue_form.php",
@@ -155,21 +255,34 @@ if(!isset($_SESSION['admin_id'])){
 				$(document).on("click",".insert_batch",function(){
 					var batch = $("#batch").val();
 					var batch_code = $("#batch_code").val();
+					var batchSCode = $("#batchSCode").val();
+					var batchTime = $("#batchTime").val();
+					var batch_year = $("#batch_year").val();
+					var offline_student = $("#offline_student").val();
+					var online_student = $("#online_student").val();
+
+					if(batch != "" && batch_code != "" && batchSCode != "" && batchTime != "" && batch_year != "" && offline_student != ""){
 					
 					$.ajax({
 					url:"insert_batch.php",
 					type:"POST",
-					data:{batch:batch,batch_code:batch_code},
+					data:{batch:batch,batch_code:batch_code,batchSCode:batchSCode,batchTime:batchTime,batch_year:batch_year,offline_student:offline_student,online_student:online_student},
 					success:function(data){
 						if(data == 1){
 							alert("batch Updated!");
 							cerate_checklist_form();
 
+						}else{
+							alert("Batch Not Inserted");
 						}
 					}
 
 					})
-					
+				}else{
+
+					alert("All field are required");
+
+				}
 				})
 
 
@@ -243,18 +356,24 @@ if(!isset($_SESSION['admin_id'])){
 				})
 				$(document).on("click",".insert_batch_coordinator",function(){
 					var batch_coordinator = $("#batch_coordinator").val();
+					if(batch_coordinator != ""){
 					$.ajax({
 						url:"insert_batch_coordinator.php",
 						type:"POST",
 						data:{batch_coordinator:batch_coordinator},
 						success:function(data){
 							if(data == 1){
-								alert("Batch Coordinator Updated!!");
+								alert("Batch Coordinator Inserted!!");
 								cerate_checklist_form();
 
+							}else{
+								alert("No Inserted");
 							}
 						}
 					})
+				}else{
+					alert("Please Fill the Name first");
+				}
 				})
 
 

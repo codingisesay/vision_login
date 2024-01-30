@@ -25,18 +25,31 @@ $resolution = mysqli_real_escape_string($connect,$_POST['resolution']);
 $issue_at_end = mysqli_real_escape_string($connect,$_POST['issue_at_end']);
 $status_of_complaint = mysqli_real_escape_string($connect,$_POST['status_of_complaint']);
 //$curent_date = date('Y-m-d');
+date_default_timezone_set("Asia/Calcutta");
+$current_date = date("Y-m-d H:i:s");
 
 $user_id = $_SESSION['id'];
 
-$query = "INSERT INTO `complaint_record` (`complaint_record_id`, `student_reg_no`, `complain_text`, `mode_of_complaint`,`complaint_received`, `complaint_category`, `complaint_sub_category`, `resolution`, `issue_at`, `status`, `updated_by`) VALUES (NULL, '$student_reg', '$complaint_txt', '$mode_of_complaint', '$datetime', '$complain_cat', '$somplaint_sub_cat', '$resolution', '$issue_at_end', '$status_of_complaint', '$user_id')";
+if($user_id == 0){
 
-$run = mysqli_query($connect,$query);
+    // page_redirect('../index.php');
+    echo "0";
 
-if($run){
+}else{
 
-    echo "1";
+    $query = "INSERT INTO `complaint_record` (`complaint_record_id`, `student_reg_no`, `complain_text`, `mode_of_complaint`,`complaint_received`, `complaint_category`, `complaint_sub_category`, `resolution`, `issue_at`, `status`,`currentdate`, `updated_by`) VALUES (NULL, '$student_reg', '$complaint_txt', '$mode_of_complaint', '$datetime', '$complain_cat', '$somplaint_sub_cat', '$resolution', '$issue_at_end', '$status_of_complaint','$current_date', '$user_id')";
+
+    $run = mysqli_query($connect,$query);
+    
+    if($run){
+    
+        echo "1";
+    
+    }
 
 }
+
+
 
 ?>
 

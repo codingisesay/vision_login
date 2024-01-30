@@ -3,7 +3,14 @@ include('testing_functions.php');
 
 $from_date = $_POST['from_date'];
 $to_date = $_POST['to_date'];
-   
+
+$run_all_class = all_class_from_date($from_date,$to_date);
+while($all_class_data = mysqli_fetch_assoc($run_all_class)){
+
+  $all_class[] = $all_class_data['time_slot'];
+
+}
+
    $run_issue = issue_data($from_date,$to_date);
    while($data_issue = mysqli_fetch_assoc($run_issue)){
 
@@ -16,6 +23,57 @@ $to_date = $_POST['to_date'];
    $array_count_issue_arr = count($issue_arr); //106
    $time_slot_array = array("09 am - 12 pm","01 pm - 04 pm","05 pm - 08 pm");
    $array_count_time_slot = count($time_slot_array); //3
+   $all_class_count = count($all_class);
+   ?>
+   <div class="container-fluid">
+    <table class="table table-bordered">
+    <thead style="background-color: #1c3961; color:white; font-weight: bolder;">
+      <tr>
+        <td>TIME SLOT</td>
+        <td>TOTAL CLASS</td>
+        <td>ISSUE</td>
+        <td>PERCENT</td>
+      </tr>
+    </thead>
+    <?php 
+    for($slot = 0; $slot < $array_count_time_slot; $slot++){
+      $all_cls = 0;
+      $isuue_cls = 0;
+      for($all_cl = 0; $all_cl < $all_class_count; $all_cl++){
+        if($time_slot_array[$slot] == $all_class[$all_cl]){
+          $all_cls++;
+        }
+  
+      }
+      for($iss = 0; $iss < $array_count_issue_arr; $iss++){
+        if($time_slot_array[$slot] == $issue_arr[$iss]['Time Slot']){
+          $isuue_cls++;
+        }
+
+      }
+
+      $percent = ($isuue_cls*100)/$all_cls;
+      $new_per = round($percent);?>
+      <tr>
+        <td><?php echo $time_slot_array[$slot]; ?></td>
+        <td><?php echo $all_cls; ?></td>
+        <td><?php echo $isuue_cls; ?></td>
+        <td><?php echo  $new_per."%"; ?></td>
+      </tr>
+      
+      
+      
+      
+      <?php
+     
+    }
+    
+    
+    ?>
+  </table>
+   </div>
+   
+   <?php
 
    for($time_slot = 0; $time_slot < $array_count_time_slot; $time_slot++){?>
     <div class="container-fluid">

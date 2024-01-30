@@ -8,7 +8,7 @@ if(!isset($_SESSION['admin_id'])){
 }
 	?>
 	<?php 
-	$faculty = $_POST['faculty'];
+	$faculty = trim(mysqli_real_escape_string($connect,$_POST['faculty']));
 
 $query_insert_faculty = "INSERT INTO faculty (faculty_name) VALUES ('$faculty')";
 $run_query_insert_faculty = mysqli_query($connect,$query_insert_faculty);

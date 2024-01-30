@@ -55,7 +55,7 @@ include('testing_session.php');
                 $output.="<td><button class='view_detail_checklist' data-class_id='{$data['class_id_from_lecture_list']}'>View</button></td>";
          
                 $output.="<td>
-                <a href='download_excel.php?checklist_id={$data['checklist_id']}'><button>Download</button></td>";
+                <a href='download_excel_with_issue.php?class_id={$data['class_id_from_lecture_list']}'><button>Download</button></td>";
             
 
 
@@ -128,7 +128,7 @@ include('testing_session.php');
            $output.="<td><button class='view_detail_checklist' data-class_id='{$data['class_id_from_lecture_list']}'>View</button></td>";
          
            $output.="<td>
-           <a href='download_excel.php?checklist_id={$data['checklist_id']}'><button>Download</button></td>";
+           <a href='download_excel_with_issue.php?class_id={$data['class_id_from_lecture_list']}'><button>Download</button></td>";
 
 
             $output.="</tr>";

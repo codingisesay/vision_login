@@ -1,5 +1,10 @@
 <?php
+session_start();
+//include('database_connection.php');
 include('database_connection.php');
+error_reporting(0);
+ini_set('session.cookie_lifetime', 2592000);
+ini_set('session.gc_maxlifetime', 2592000);
 include('functions.php');
 include('library/UserInformation.php');
 if(isset($_POST['submit']) & !empty($_POST['filed_username']) & !empty($_POST['filed_password'])){
@@ -82,7 +87,8 @@ if(isset($_POST['submit']) & !empty($_POST['filed_username']) & !empty($_POST['f
         }elseif($row == 1){
 		
 		if($number_of_device_access > $active_row_from_login_log){
-		
+			ini_set('session.cookie_lifetime', 2592000);
+			ini_set('session.gc_maxlifetime', 2592000);
 		 session_start();
 		 $_SESSION['id']=$user_id;
 		 $device_cookie=$_COOKIE['PHPSESSID'];

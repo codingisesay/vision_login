@@ -9,56 +9,56 @@ include('testing_session.php');
   include('../database_connection.php');
   include('testing_functions.php');
 
-  $checklist_type = mysqli_real_escape_string($connect,$_POST['type_of_checklist']);
+  $checklist_type = trim(mysqli_real_escape_string($connect,$_POST['type_of_checklist']));
 
-  $testing_member = mysqli_real_escape_string($connect,$_POST['testing_user_id']);
-  $monitor_user_id = mysqli_real_escape_string($connect,$_POST['monitor_user_id']);
+  $testing_member = trim(mysqli_real_escape_string($connect,$_POST['testing_user_id']));
+  $monitor_user_id = trim(mysqli_real_escape_string($connect,$_POST['monitor_user_id']));
 
-  $testing_time_started = mysqli_real_escape_string($connect,$_POST['testing_time_started']);
-  $testing_time_end = mysqli_real_escape_string($connect,$_POST['testing_time_end']);
-  $insert_venue = mysqli_real_escape_string($connect,$_POST['insert_venue']);
-  $class = mysqli_real_escape_string($connect,$_POST['class'].'-'.$_POST['classnumber']);
-  $insert_faculty = mysqli_real_escape_string($connect,$_POST['insert_faculty']);
-
-
-  $insert_batch_coordinator_avail = mysqli_real_escape_string($connect,$_POST['batch_coordinator_avail']);
+  $testing_time_started = trim(mysqli_real_escape_string($connect,$_POST['testing_time_started']));
+  $testing_time_end = trim(mysqli_real_escape_string($connect,$_POST['testing_time_end']));
+  $insert_venue = trim(mysqli_real_escape_string($connect,$_POST['insert_venue']));
+  $class = trim($_POST['class']).'-'.trim($_POST['classnumber']);
+  $insert_faculty = trim(mysqli_real_escape_string($connect,$_POST['insert_faculty']));
 
 
-  $insert_batch_coordinator = mysqli_real_escape_string($connect,$_POST['insert_batch_coordinator']);
-  $insert_camera_man = mysqli_real_escape_string($connect,$_POST['insert_camera_man']);
+  $insert_batch_coordinator_avail = trim(mysqli_real_escape_string($connect,$_POST['batch_coordinator_avail']));
+
+
+  $insert_batch_coordinator = trim(mysqli_real_escape_string($connect,$_POST['insert_batch_coordinator']));
+  $insert_camera_man = trim(mysqli_real_escape_string($connect,$_POST['insert_camera_man']));
 
   
-  $insert_tech_support_person_avail = mysqli_real_escape_string($connect,$_POST['tech_support_person_avail']);
+  $insert_tech_support_person_avail = trim(mysqli_real_escape_string($connect,$_POST['tech_support_person_avail']));
 
-  $insert_tech_support_person = mysqli_real_escape_string($connect,$_POST['tech_support_person']);
-  $insert_board_marker_pen = mysqli_real_escape_string($connect,$_POST['board_pen_marker']);
-  $insert_display_synopsis = mysqli_real_escape_string($connect,$_POST['display_synopsis']);
+  $insert_tech_support_person = trim(mysqli_real_escape_string($connect,$_POST['tech_support_person']));
+  $insert_board_marker_pen = trim(mysqli_real_escape_string($connect,$_POST['board_pen_marker']));
+  $insert_display_synopsis = trim(mysqli_real_escape_string($connect,$_POST['display_synopsis']));
 
 
-  $insert_camera_focous = mysqli_real_escape_string($connect,$_POST['insert_camera_focous']);
-  $insert_camera_battery = mysqli_real_escape_string($connect,$_POST['insert_camera_battery']);
-  $insert_memory_card = mysqli_real_escape_string($connect,$_POST['insert_memory_card']);
-  $insert_memory_card_remark = mysqli_real_escape_string($connect,$_POST['insert_memory_card_remark']);
-  $insert_audio_live = mysqli_real_escape_string($connect,$_POST['insert_audio_live']);
-  $insert_audio_live_remark = mysqli_real_escape_string($connect,$_POST['insert_audio_live_remark']);
-  $insert_mic_testing = mysqli_real_escape_string($connect,$_POST['insert_mic_testing']);
-  $insert_video_pixxel = mysqli_real_escape_string($connect,$_POST['insert_video_pixxel']);
-  $insert_internet_line = mysqli_real_escape_string($connect,$_POST['insert_internet_line']);
-  $insert_internet_speed = mysqli_real_escape_string($connect,$_POST['insert_internet_speed']);
-  $insert_remote_system_laptop = mysqli_real_escape_string($connect,$_POST['insert_remote_system_laptop']);
-  $remote_system_ipad = mysqli_real_escape_string($connect,$_POST['remote_system_ipad']);
-  $remote_ipad_remark = mysqli_real_escape_string($connect,$_POST['remote_ipad_remark']);
-  $prompter_name = mysqli_real_escape_string($connect,$_POST['insert_prompter']);
-  $convey_to_bcoo = mysqli_real_escape_string($connect,$_POST['convey_to_bcoo']);
-  $handout = mysqli_real_escape_string($connect,$_POST['handout']);
-  $handout_remark = mysqli_real_escape_string($connect,$_POST['handout_remark']);
-  $next_class_update = mysqli_real_escape_string($connect,$_POST['next_class_update']);
-  $query_testing = mysqli_real_escape_string($connect,$_POST['query_testing']);
+  $insert_camera_focous = trim(mysqli_real_escape_string($connect,$_POST['insert_camera_focous']));
+  $insert_camera_battery = trim(mysqli_real_escape_string($connect,$_POST['insert_camera_battery']));
+  $insert_memory_card = trim(mysqli_real_escape_string($connect,$_POST['insert_memory_card']));
+  $insert_memory_card_remark = trim(mysqli_real_escape_string($connect,$_POST['insert_memory_card_remark']));
+  $insert_audio_live = trim(mysqli_real_escape_string($connect,$_POST['insert_audio_live']));
+  $insert_audio_live_remark = trim(mysqli_real_escape_string($connect,$_POST['insert_audio_live_remark']));
+  $insert_mic_testing = trim(mysqli_real_escape_string($connect,$_POST['insert_mic_testing']));
+  $insert_video_pixxel = trim(mysqli_real_escape_string($connect,$_POST['insert_video_pixxel']));
+  $insert_internet_line = trim(mysqli_real_escape_string($connect,$_POST['insert_internet_line']));
+  $insert_internet_speed = trim(mysqli_real_escape_string($connect,$_POST['insert_internet_speed']));
+  $insert_remote_system_laptop = trim(mysqli_real_escape_string($connect,$_POST['insert_remote_system_laptop']));
+  $remote_system_ipad = trim(mysqli_real_escape_string($connect,$_POST['remote_system_ipad']));
+  $remote_ipad_remark = trim(mysqli_real_escape_string($connect,$_POST['remote_ipad_remark']));
+  $prompter_name = trim(mysqli_real_escape_string($connect,$_POST['insert_prompter']));
+  $convey_to_bcoo = trim(mysqli_real_escape_string($connect,$_POST['convey_to_bcoo']));
+  $handout = trim(mysqli_real_escape_string($connect,$_POST['handout']));
+  $handout_remark = trim(mysqli_real_escape_string($connect,$_POST['handout_remark']));
+  $next_class_update = trim(mysqli_real_escape_string($connect,$_POST['next_class_update']));
+  $query_testing = trim(mysqli_real_escape_string($connect,$_POST['query_testing']));
 
-  $live_started_at = mysqli_real_escape_string($connect,$_POST['live_started_at']);
+  $live_started_at = trim(mysqli_real_escape_string($connect,$_POST['live_started_at']));
 
-  $observation_during_testing = mysqli_real_escape_string($connect,$_POST['observation_during_testing']);
-  $checklist_id = $_POST['checklist_id'];
+  $observation_during_testing = trim(mysqli_real_escape_string($connect,$_POST['observation_during_testing']));
+  $checklist_id = trim($_POST['checklist_id']);
   date_default_timezone_set("Asia/Kolkata");
   $submit_checklist_time = date("H:i:s");
 
@@ -92,15 +92,15 @@ include('testing_session.php');
       if($insert_record == true){
 
 
-          $insert_board_pen_marker_remark = mysqli_real_escape_string($connect,$_POST['insert_board_pen_marker_remark']);
-          $insert_display_synopsis_remark = mysqli_real_escape_string($connect,$_POST['insert_display_synopsis_remark']);
+          $insert_board_pen_marker_remark = trim(mysqli_real_escape_string($connect,$_POST['insert_board_pen_marker_remark']));
+          $insert_display_synopsis_remark = trim(mysqli_real_escape_string($connect,$_POST['insert_display_synopsis_remark']));
 
-          $insert_camera_focous_remark = mysqli_real_escape_string($connect,$_POST['insert_camera_focous_remark']);
-          $insert_camera_battery_remark = mysqli_real_escape_string($connect,$_POST['insert_camera_battery_remark']);
-          $insert_remote_laptop_remar = mysqli_real_escape_string($connect,$_POST['insert_remote_laptop_remar']);
-          $convey_to_bcoo_remark = mysqli_real_escape_string($connect,$_POST['convey_to_bcoo_remark']);
-          $next_class_remark = mysqli_real_escape_string($connect,$_POST['next_class_remark']);
-          $testing_query_remark = mysqli_real_escape_string($connect,$_POST['testing_query_remark']);
+          $insert_camera_focous_remark = trim(mysqli_real_escape_string($connect,$_POST['insert_camera_focous_remark']));
+          $insert_camera_battery_remark = trim(mysqli_real_escape_string($connect,$_POST['insert_camera_battery_remark']));
+          $insert_remote_laptop_remar = trim(mysqli_real_escape_string($connect,$_POST['insert_remote_laptop_remar']));
+          $convey_to_bcoo_remark = trim(mysqli_real_escape_string($connect,$_POST['convey_to_bcoo_remark']));
+          $next_class_remark = trim(mysqli_real_escape_string($connect,$_POST['next_class_remark']));
+          $testing_query_remark = trim(mysqli_real_escape_string($connect,$_POST['testing_query_remark']));
 
           if($insert_board_pen_marker_remark !=="" || $insert_display_synopsis_remark !== "" || $insert_camera_focous_remark !== "" || $insert_camera_battery_remark !== "" || $insert_remote_laptop_remar !== "" || $convey_to_bcoo_remark !== "" || $next_class_remark !== "" || $testing_query_remark !== ""){
 

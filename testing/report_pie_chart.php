@@ -1,4 +1,5 @@
 <?php 
+error_reporting(0);
 include('testing_session.php');
 
 ?>
@@ -12,7 +13,7 @@ include('testing_session.php');
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Time Slot', 'Total Class', 'Issue','Percent'],
+          ['Time Slot', 'Total Class', 'Issue','Percent',{ role: 'annotation' }],
           <?php
 
  $from_date = $_POST['from_date'];
@@ -61,7 +62,7 @@ $all_cls++;
 
 
 ?>
-["<?php echo $time_slot_array[$time_slot_arr_str]; ?>", <?php echo $all_cls; ?>, <?php echo $isuue_cls; ?>,<?php echo $new_per; ?>],
+["<?php echo $time_slot_array[$time_slot_arr_str]; ?>", <?php echo $all_cls; ?>, <?php echo $isuue_cls; ?>,<?php echo $new_per; ?>,'aka'],
 
 <?php
   
@@ -76,6 +77,13 @@ $all_cls++;
           
          
         ]);
+        // var view = new google.visualization.DataView(data);
+        // view.setColumns([0, 1,
+        //                { calc: "stringify",
+        //                  sourceColumn: 1,
+        //                  type: "string",
+        //                  role: "annotation" },
+        //                2]);
        
         var options = {
           chart: {
@@ -90,5 +98,6 @@ $all_cls++;
         var chart = new google.charts.Bar(document.getElementById('charts'));
 
         chart.draw(data, google.charts.Bar.convertOptions(options));
+        // chart.draw(view, options);
       }
     </script>

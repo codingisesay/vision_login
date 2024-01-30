@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_start();
 include('../database_connection.php');
 include('../functions.php');
@@ -17,6 +18,7 @@ if(!isset($_SESSION['id']) || !isset($_COOKIE['PHPSESSID']) || $data['session_st
 include('complaint_functions.php');
 $from_date = $_POST['from_date'];
 $to_date = $_POST['to_date'];
+//$sub_cat = $_POST['sub_cat'];
 $sub_cat = $_POST['sub_cat'];
 $run_for_id = fetch_cat_by_id($sub_cat);
 $data_for_id = mysqli_fetch_assoc($run_for_id);
@@ -27,7 +29,7 @@ while($data_total_complaints = mysqli_fetch_assoc($run_total_complaint)){
     $total_complaint[] = array("Student Reg No" => $data_total_complaints['student_reg_no'],"Complaint Text" => $data_total_complaints['complain_text'],
 "Mode Name" => $data_total_complaints['mode_name'], "Complaint Received" => $data_total_complaints['complaint_received'],"Complaint Category Name" => $data_total_complaints['complaint_category_name'],
 "Complaint Sub Category Name" => $data_total_complaints['complaint_sub_category_name'],"Resolution" => $data_total_complaints['resolution'],"Issue At" => $data_total_complaints['issue_at'],
-"Complaint Status Name" => $data_total_complaints['complaint_status_name'], "Current Date" => $data_total_complaints['current_date'], "Current Date" =>$data_total_complaints['current_date'],
+"Complaint Status Name" => $data_total_complaints['complaint_status_name'], "Current Date" => $data_total_complaints['currentdate'],
 "User Name" => $data_total_complaints['user_name']);
 }
 $array_count_total_issue = count($total_complaint);
@@ -39,7 +41,7 @@ for($total = 0; $total < $array_count_total_issue; $total++){
         $cat_complaint[] = array("Student Reg No" => $total_complaint[$total]['Student Reg No'],"Complaint Text" => $total_complaint[$total]['Complaint Text'],
         "Mode Name" => $total_complaint[$total]['Mode Name'], "Complaint Received" => $total_complaint[$total]['Complaint Received'],"Complaint Category Name" => $total_complaint[$total]['Complaint Category Name'],
         "Complaint Sub Category Name" => $total_complaint[$total]['Complaint Sub Category Name'],"Resolution" => $total_complaint[$total]['Resolution'],"Issue At" => $total_complaint[$total]['Issue At'],
-        "Complaint Status Name" => $total_complaint[$total]['Complaint Status Name'], "Current Date" => $total_complaint[$total]['Current Date'], "Current Date" =>$total_complaint[$total]['Current Date'],
+        "Complaint Status Name" => $total_complaint[$total]['Complaint Status Name'], "Current Date" => $total_complaint[$total]['Current Date'], 
         "User Name" => $total_complaint[$total]['User Name']);
         
 
@@ -69,7 +71,7 @@ for($sub_cat = 0; $sub_cat < $sub_count_cat; $sub_cat++){?>
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $sub_cat; ?>"><?php echo $sub_cat_by_cat_id[$sub_cat]['Sub Cat Name']; ?></a>
       </h4>
     </div>
-    <div id="collapse<?php echo $sub_cat; ?>" class="panel-collapse collapse in">
+    <div id="collapse<?php echo $sub_cat; ?>" class="panel-collapse collapse">
       <div class="panel-body">
           <table class="table table-striped" border="1px solid black">
               <tr>

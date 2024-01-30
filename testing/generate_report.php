@@ -1,4 +1,5 @@
  <?php 
+ error_reporting(0);
 include('testing_session.php');
 //include('testing_functions.php');
 
@@ -19,32 +20,23 @@ include('testing_session.php');
            
                 <?php include('testing_navbar.php'); ?>
                 <form action="raw_data.php" method="POST">
-                <div class="select_date_for_report">
-                <div class="from_date">
-                <label>From Date : </label>
-                <input type="date" name="from_date" class="date_input" id="from_date" required>
-                </div>
-                <div class="to_date">
-                <label>To Date : </label>
-                <input type="date" name="to_date" class="date_input" id="to_date" required>
-                </div>
-                <div class="submit_date">
-                  <input type="submit" name="download_raw_data" value="Download Raw Data" class="submit_dates">
-                  
-                </div>
-                </div>
-                </form>
-                
-                <div class="side_navbar">
-                  <a href="#" id="class_timing_inst">Class Timing Vs Interruptions</a>
-                  <a href="#" id="venue_vs_inst">Venue Vs Interruptions</a>
-                  <a href="#" id="Issue_freq">Issue Vs Frequency</a>
-                  <lable>Select Issue Category</lable>
-                  <select style="position:relative; left:30px; width:70%; height:30px;" id="select_issue_cat">
+                <div class="container-fluid">
+<div class="row">
+  <div class="col-sm-3">
+  <label>From Date : </label><br>
+  <input type="date" name="from_date" class="date_input" id="from_date" required>
+  </div>
+  <div class="col-sm-3">
+  <label>To Date : </label><br>
+  <input type="date" name="to_date" class="date_input" id="to_date" required>
+  </div>
+  <div class="col-sm-3">
+  <label>Issue Category</label><br>
+  <select id="select_issue_cat">
                     <option>Select Any One</option>
                     <?php 
                    
-                    include('testing_functions.php');
+                   include('testing_functions.php');
                     $run = all_issue_category();
                     while($data = mysqli_fetch_assoc($run)){?>
                     <option id="issue_type"><?php echo $data['issue_name'];?></option>
@@ -55,10 +47,11 @@ include('testing_session.php');
                     
                     ?>
                     
-                  </select><br><br>
-                  
-                  <lable>Issue By Class Room</lable>
-                  <select style="position:relative; left:30px; width:70%; height:30px;" id="select_classroom">
+                  </select>
+  </div>
+  <div class="col-sm-3">
+  <label>Issue By Class Room</label><br>
+                  <select id="select_classroom">
                     <option>Select Any One</option>
                     <?php 
                     $run_venue = all_data_from_venue();
@@ -70,9 +63,16 @@ include('testing_session.php');
                     }
                     
                     ?>
-                  </select><br><br>
-                  <lable>Issue By Venue</lable>
-                  <select style="position:relative; left:30px; width:70%; height:30px;" id="select_cen">
+                  </select>
+  </div>
+ 
+  </div>
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-3">
+  <label>Issue By Venue</label><br>
+                  <select id="select_cen">
                   <option>Select any One</option>
                   <?php
                   $run_for_center = fetch_center_name();
@@ -83,16 +83,41 @@ include('testing_session.php');
                   }
             
                   ?>
-                </select>
+                </select></div>
+</div>
+</div><br>
+<div class="container-fluid">
+  <button type="button" id="class_timing_inst" class="btn btn-success">Class Timing Vs Interruptions</button>
+  <button type="button" id="venue_vs_inst" class="btn btn-success">Venue Vs Interruptions</button>
+  <button type="button" id="Issue_freq" class="btn btn-success">Issue Vs Frequency</button>
+  <button type="submit" class="btn btn-success" id="download_raw_data_button">Download Raw Data</button>
+</div>
+
+                <!-- <div class="select_date_for_report">
+                <div class="from_date">
+                <label>From Date : </label>
+                <input type="date" name="from_date" class="date_input" id="from_date" required>
                 </div>
+                <div class="to_date">
+                <label>To Date : </label>
+                <input type="date" name="to_date" class="date_input" id="to_date" required>
+                </div> -->
+                <!-- <div class="submit_date">
+                  <input type="submit" name="download_raw_data" value="Download Raw Data" class="submit_dates">
+                  
+                </div> -->
                 
-                <div id="charts">
+                </form>
+                
+             
+                <br>
+                <div id="charts" class="container-fluid">
                 
 
-                </div>
+                </div><br>
                 <div id="load_table">
 
-                  </div>
+                  </div> 
 
 
             <div id="load_report_per_issue_table">
@@ -124,7 +149,11 @@ include('testing_session.php');
                     //e.preventDefault();
                     var from_date = $("#from_date").val();
                     var to_date = $("#to_date").val();
-                  
+                  if(from_date == "" || to_date == ""){
+
+                    alert("Please select the dates First");
+
+                  }else{
                     $.ajax({
                       url: "report_pie_chart.php",
                       type: "POST",
@@ -147,13 +176,20 @@ include('testing_session.php');
                       }
                       
                     })
+                  }
+                    
                   })
 
                   $("#venue_vs_inst").on("click",function(){
 
                     var from_date = $("#from_date").val();
                     var to_date = $("#to_date").val();
-                    $.ajax({
+                    if(from_date == "" || to_date == ""){
+
+                      alert("Please Select The Dates First");
+
+                    }else{
+                      $.ajax({
                       url: "report_venue_inst.php",
                       type: "POST",
                       data:{from_date:from_date,to_date:to_date},
@@ -174,6 +210,8 @@ include('testing_session.php');
 
                    }
                 })
+                    }
+                   
 
                })
 
@@ -181,7 +219,12 @@ include('testing_session.php');
                     var from_date = $("#from_date").val();
                     var to_date = $("#to_date").val();
 
-                    $.ajax({
+                    if(from_date == "" || to_date == ""){
+
+                      alert("Please Select The Dates First");
+
+                    }else{
+                      $.ajax({
                       url: "report_issue_frequency.php",
                       type: "POST",
                       data:{from_date:from_date,to_date:to_date},
@@ -201,6 +244,9 @@ include('testing_session.php');
 
                       }
                     })
+                    }
+
+                    
                   })
         
                   $("#select_issue_cat").change(function(){
@@ -210,12 +256,25 @@ include('testing_session.php');
                     //console.log(from_date);
                     //console.log(to_date);
                     //console.log(selected_cat);
-                    $.ajax({
+                    if(from_date == "" || to_date == ""){
+
+                      alert("Select The Dates First");
+
+                    }else{
+                      $.ajax({
                       url:"report_per_issue.php",
                       type:"POST",
                       data:{from_date:from_date,to_date:to_date,selected_cat:selected_cat},
                       success:function(data){
-                        $("#charts").html(data);
+                        if(data == 0){
+
+                          // alert("No Selected Type Issue For This Time Slot");
+                          $("#charts").html(data);
+
+                        }else{
+                          $("#charts").html(data);
+                        }
+                        
                         $.ajax({
                           url:"load_table_report_per_issue.php",
                           type:"POST",
@@ -227,6 +286,8 @@ include('testing_session.php');
                         })
                       }
                     })
+                    }
+                
 
 
                   })
@@ -235,8 +296,14 @@ include('testing_session.php');
                     var from_date = $("#from_date").val();
                     var to_date = $("#to_date").val();
                     var cls = $(this).val();
-                   
-                    $.ajax({
+
+                    if(from_date == "" || to_date == "" ){
+
+                      alert("Please Select The Dates First");
+
+                    }else{
+
+                      $.ajax({
                       url:"issue_by_classroom.php",
                       type:"POST",
                       data:{from_date:from_date,to_date:to_date,cls:cls},
@@ -254,6 +321,7 @@ include('testing_session.php');
                       }
                     })
 
+                    }
 
                   })
 
@@ -261,7 +329,13 @@ include('testing_session.php');
                     var from_date = $("#from_date").val();
                     var to_date = $("#to_date").val();
                     var center_name = $(this).val();
-                    $.ajax({
+
+                    if(from_date == "" || to_date == ""){
+
+                    alert("Please The Dates First");
+
+                    }else{
+                      $.ajax({
                       url:"issue_by_venue_graph.php",
                       type:"POST",
                       data:{from_date:from_date,to_date:to_date,center_name:center_name},
@@ -278,7 +352,7 @@ include('testing_session.php');
 
                       }
                     })
-
+                    }
                   })
 
 

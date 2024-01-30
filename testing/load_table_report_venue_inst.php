@@ -1,8 +1,29 @@
 <?php 
+error_reporting(0);
 include('testing_functions.php');
-
+//load_table_report_venue_inst.php
 $from_date = $_POST['from_date'];
 $to_date = $_POST['to_date'];
+//$from_date = '2022-08-20';
+//$to_date = '2022-09-20';
+
+$run_all_class = all_class_from_date($from_date,$to_date);
+while($data_all_class = mysqli_fetch_assoc($run_all_class)){
+
+    $all_class[]=array("venue"=>$data_all_class['venue'],"Class date"=>$data_all_class['class_date']);
+
+}
+$all_class_count = count($all_class);
+for($all_data_rw = 0; $all_data_rw <$all_class_count; $all_data_rw++){
+
+    $all_class_ven = $all_class[$all_data_rw]['venue'];
+    $run_all_class = fetch_center_id_from_van($all_class_ven);
+    $data_all_class = mysqli_fetch_assoc($run_all_class);
+     $all_class_venue_center[]=array("class id"=>$data_all_class['center_id']);   //issue data array with venue and center
+    
+
+}
+
    
    $run_issue = issue_data($from_date,$to_date);
    while($data_issue = mysqli_fetch_assoc($run_issue)){
@@ -34,7 +55,76 @@ $center[] = array("center id"=>$data_center['center_id'],"name"=>$data_center['c
 
 }
 
-$center_count = count($center);   
+$center_count = count($center); ?>
+
+<div class="container-fluid">
+    <table class="table table-bordered">
+    <thead style="background-color: #1c3961; color:white; font-weight: bolder;">
+      <tr>
+        <td>VENUE</td>
+        <td>TOTAL CLASS</td>
+        <td>ISSUE</td>
+        <td>PERCENT</td>
+      </tr>
+    </thead>
+<?php
+for($cent = 0; $cent<$center_count;$cent++){
+  $all_class_on_particular_venue = 0;
+  for($all=0;$all<$all_class_count;$all++){
+
+      if($center[$cent]['center id'] == $all_class_venue_center[$all]['class id']){
+          $all_class_on_particular_venue++;
+      }
+
+      
+
+  }
+  $issue_class_on_particular_venue = 0;
+  for($issu = 0; $issu<$array_count_issue_arr;$issu++){
+      
+      if($center[$cent]['center id'] == $issue_venue_center[$issu]['center id']){
+
+          $issue_class_on_particular_venue++;
+
+      }
+
+  }
+
+  $percent = ($issue_class_on_particular_venue*100)/$all_class_on_particular_venue;
+
+  
+   if($issue_class_on_particular_venue == 0 && $all_class_on_particular_venue == 0 ){
+
+      $new_percent = 0;
+
+   }else{
+
+      $new_percent = round($percent);
+
+   }
+  
+  ?>
+  
+  <tr>
+    <td><?php echo $center[$cent]['name']; ?></td>
+    <td><?php echo $all_class_on_particular_venue; ?></td>
+    <td><?php echo $issue_class_on_particular_venue; ?></td>
+    <td><?php echo $new_percent."%"; ?></td>
+  </tr>
+  
+  <?php
+
+  
+
+
+}
+
+?>
+</table>
+ </div>
+
+
+<?php 
 
 for($cen = 0; $cen < $center_count; $cen++){?>
 <div class="container-fluid">

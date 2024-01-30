@@ -1,4 +1,4 @@
-<?php
+  <?php
 error_reporting(0);
 ini_set('session.cookie_lifetime', 2592000);
 ini_set('session.gc_maxlifetime', 2592000);
