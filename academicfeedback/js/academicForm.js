@@ -15,6 +15,40 @@ $(document).ready(function(){
         
     })
 
+    var dictation = $("#dictationinclass").val();
+    console.log(dictation);
+
+    if(dictation == "Yes"){
+        $("#chunk").show();
+        $("#noofpag").show();
+        $("#dictationinclasschunk").attr('required',true);
+        $("#Approximatelypages").attr('required',true);
+    }else{
+        $("#chunk").hide();
+        $("#noofpag").hide(); 
+        $("#dictationinclasschunk").attr("required", false);
+        $("#Approximatelypages").attr("required", false);  
+    }
+
+    $("#dictationinclass_td").on("change",function(){
+        var dictation = $("#dictationinclass").val();
+        console.log(dictation);
+
+        if(dictation == "Yes"){
+            $("#chunk").show();
+            $("#noofpag").show();
+            $("#dictationinclasschunk").attr('required',true);
+            $("#Approximatelypages").attr('required',true);
+        }else{
+            $("#chunk").hide();
+            $("#noofpag").hide(); 
+            $("#dictationinclasschunk").attr("required", false);
+            $("#Approximatelypages").attr("required", false);  
+        }
+
+    })
+
+
     $("#synopsisPrevious_td").on("change",function(){
         var synopsisPrevious = $("#synopsisPrevious").val();
         if(synopsisPrevious == "Yes"){
@@ -143,6 +177,103 @@ $(document).ready(function(){
         
     })
 
+    $("#facultymeetexpectation_id").on("change",function(){
+        var facultymeetexpectation = $("#facultymeetexpectation").val();
+        if(facultymeetexpectation == "No"){
+
+            $("#differencedonecomment").show();
+            $("#differencedonecomment").attr("required", true);
+
+        }else if(facultymeetexpectation == "Yes"){
+            $("#differencedonecomment").hide();
+            $("#differencedonecomment").attr("required", false);
+        }else{
+            $("#differencedonecomment").hide();
+        }
+        
+    })
+
+    $("#facultymeetexpectation_id").on("change",function(){
+        var facultymeetexpectation = $("#facultymeetexpectation").val();
+        
+        if(facultymeetexpectation == "No"){
+
+            $("#whatDifferencedone").show();
+
+        }else{
+            $("#whatDifferencedone").hide();
+        }
+
+    })
+
+    $("#linkwithcurrentaffair_id").on("change",function(){
+        var linkwithcurrentaffair = $("#linkwithcurrentaffair").val();
+        if(linkwithcurrentaffair == "Applicable"){
+
+            $(".displaynone").show();
+
+        }else{
+            $(".displaynone").hide();
+        }
+
+    })
+
+    $("#hanoutinclass_td").on("change",function(){
+        var hanoutinclass = $("#hanoutinclass").val();
+        console.log(hanoutinclass);
+        if(hanoutinclass == "Yes"){
+
+            $("#sent_to_class_support").show();
+            $("#handoutToTechteam").attr("required", true);
+
+        }else{
+            $("#sent_to_class_support").hide();
+            $("#handoutToTechteam").attr("required", false);
+        }
+
+    })
+
+    
+
+    $("#atAnyPoint").on("change",function(){
+        // var val = $("#atAnyPoint").val();
+        if ($("#atAnyPoint").is(
+            ":checked")) {
+            $("#atAnyPointcomment").show();
+        } else {
+            $("#atAnyPointcomment").hide();
+        }
+
+           
+
+    })
+
+    $("#issueHighlighted").on("change",function(){
+        // var val = $("#atAnyPoint").val();
+        if ($("#issueHighlighted").is(
+            ":checked")) {
+            $("#issueHighlightedcomment").show();
+        } else {
+            $("#issueHighlightedcomment").hide();
+        }
+
+           
+
+    })
+
+    $("#anyOtherFeedback").on("change",function(){
+        // var val = $("#atAnyPoint").val();
+        if ($("#anyOtherFeedback").is(
+            ":checked")) {
+            $("#anyOtherFeedbackcomment").show();
+        } else {
+            $("#anyOtherFeedbackcomment").hide();
+        }
+
+           
+
+    })
+//For update page
     var resionfordelay = $("#resionfordelay").val();
     var classendeatlyremark = $("#classendeatlyremark").val();
     var videoSynopsis = $("#videoSynopsis").val();
@@ -152,17 +283,63 @@ $(document).ready(function(){
     var specificissuehighlight = $("#specificissuehighlight").val();
     var managementtechnicalissue = $("#managementtechnicalissue").val();
     var videoremoveportion = $("#videoremoveportion").val();
-
-    
-    
-    
-    
-    
+    var hanoutinclass = $("#hanoutinclass").val();
 
     
 
-    
-    
+    // var atAnyPoint = $("#atAnyPoint").val();
+    // var issueHighlighted = $("#issueHighlighted").val();
+    // var anyOtherFeedback = $("#anyOtherFeedback").val();
+    var facultymeetexpectation = $("#facultymeetexpectation").val();
+
+    var linkwithcurrentaffair = $("#linkwithcurrentaffair").val();
+    if(linkwithcurrentaffair == "Applicable"){
+
+        $(".displaynone").show();
+
+    }else{
+        $(".displaynone").hide();
+    }
+
+    if ($("#atAnyPoint").is(
+        ":checked")) {
+        $("#atAnyPointcomment").show();
+    } else {
+        $("#atAnyPointcomment").hide();
+    }
+
+    if ($("#issueHighlighted").is(
+        ":checked")) {
+        $("#issueHighlightedcomment").show();
+    } else {
+        $("#issueHighlightedcomment").hide();
+    }
+
+
+    if ($("#anyOtherFeedback").is(
+        ":checked")) {
+        $("#anyOtherFeedbackcomment").show();
+    } else {
+        $("#anyOtherFeedbackcomment").hide();
+    }
+
+    if(hanoutinclass == 'Yes'){
+
+        $("#sent_to_class_support").show();
+
+    }else{
+        $("#sent_to_class_support").hide(); 
+    }
+
+    if(facultymeetexpectation == 'No'){
+
+        $("#whatDifferencedone").show();
+
+    }else{
+        $("#whatDifferencedone").hide(); 
+    }
+
+
     if(resionfordelay == "Yes"){
 
         $("#resionfordelaycomment").show();
@@ -216,8 +393,13 @@ $(document).ready(function(){
 
     }
 
-    
+    $.ajax({
 
+    })
+$("#usr").on('change',function(){
+    var start = $("#usr").val();
+    console.log(start);
+})
     
     
 })

@@ -106,8 +106,9 @@
 					 <!-- <li class="dropdown" style="display:none;"> -->
                      <a href="javascript:void(0)" class="dropbtn">Dashboard</a>
                      <div class="dropdown-content">
-                     <a href="dateWiseAcademicForm.php">Date Wise</a>
+                     <a href="dateWiseAcademicForm.php">Last Three Days</a>
                      <a href="summaryAcademicForm.php">Summary</a>
+					 <a href="masterSheet.php">Master Sheet</a>
 					
                      
     </div>

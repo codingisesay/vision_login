@@ -108,6 +108,7 @@
 					 <a href="faculty_wise_att.php">Batch Faculty</a>
 					 <a href="subject_wise_att.php">Batch subject</a>
 					 <a href="SubjectCompression.php">Subject Comparison</a>
+					 <a href="singleBatchAvgAtt.php">Single Batch Avg.</a>
                      
     </div>
   </li>

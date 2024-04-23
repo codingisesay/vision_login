@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting(1);
 ini_set('session.gc_maxlifetime', 2592000);
 //ini_set('session.save_path', '/var/lib/php/sessions');
 session_start();
