@@ -102,7 +102,7 @@ $(document).ready(function(){
         if(videoremoveportion == "Yes"){
 
             $("#videoremoveportioncomment").show();
-            $("#videoremoveportioncomment").attr('required', true);
+            // $("#videoremoveportioncomment").attr('required', true);
 
         }else if(videoremoveportion == "No"){
             $("#videoremoveportioncomment").hide();

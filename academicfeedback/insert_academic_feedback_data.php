@@ -119,7 +119,18 @@ if($anyOtherFeedback == ""){
  $specificissuehighlightcomment = trim(mysqli_real_escape_string($connect,$_REQUEST['issueHighlightedcomment']));
  $managementtechnicalissuecomment = trim(mysqli_real_escape_string($connect,$_REQUEST['atAnyPointcomment']));
  $anyOtherFeedbackcomment = trim(mysqli_real_escape_string($connect,$_REQUEST['anyOtherFeedbackcomment']));
- $videoremoveportioncomment = trim(mysqli_real_escape_string($connect,$_REQUEST['videoremoveportioncomment']));
+
+//
+$Controversial_Remark = trim(mysqli_real_escape_string($connect,$_REQUEST['Controversial_Remark']));
+$Irrelevant_Avoidable_deviations = trim(mysqli_real_escape_string($connect,$_REQUEST['Irrelevant_Avoidable_deviations']));
+$Behaviour_Issue = trim(mysqli_real_escape_string($connect,$_REQUEST['Behaviour_Issue']));
+$Loose_Comments = trim(mysqli_real_escape_string($connect,$_REQUEST['Loose_Comments']));
+$others = trim(mysqli_real_escape_string($connect,$_REQUEST['others']));
+
+$videoremoveportioncomment = $Controversial_Remark.",".$Irrelevant_Avoidable_deviations.",".$Behaviour_Issue.",".$Loose_Comments.",".$others;
+
+
+//  $videoremoveportioncomment = trim(mysqli_real_escape_string($connect,$_REQUEST['videoremoveportioncomment']));
 
 
 

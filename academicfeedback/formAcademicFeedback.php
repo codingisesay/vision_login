@@ -44,7 +44,7 @@ include('academicfeedbackFunction.php');
     
     
     // echo "<pre>";
-    // print_r($classDetails);
+    // print_r($acadmicFeebackData);
     
     
     ?>
@@ -870,7 +870,19 @@ include('academicfeedbackFunction.php');
             <option value="No">No</option>
             
           
-        </select><br><textarea class="form-control" rows="5" id="videoremoveportioncomment" name="videoremoveportioncomment" placeholder="Please Enter The details" style="display:none;"><?php echo $acadmicFeebackData[0]['video_portion_need_to_cut_remark'];?></textarea>
+        </select><br>
+        <?php 
+        $videoremark = explode(",",$acadmicFeebackData[0]['video_portion_need_to_cut_remark']);
+        // echo "<pre>";
+        // print_r($videoremark); 
+        ?>
+        <div id="videoremoveportioncomment" style="display: none;">
+        <input type="checkbox" class="" name="Controversial_Remark" value="Controversial Remark (Religious/Political etc)" <?php echo $Variable1 = ($videoremark[0]=="") ? ("") : ("checked"); ?>> Controversial Remark (Religious/Political etc)<br>
+        <input type="checkbox" class="" name="Irrelevant_Avoidable_deviations" value="Irrelevant and Avoidable deviations" <?php echo $Variable2 = ($videoremark[1]=="") ? ("") : ("checked"); ?>> Irrelevant and Avoidable deviations<br>
+        <input type="checkbox" class="" name="Behaviour_Issue" value="Behaviour Issue (With Student or staff etc)" <?php echo $Variable3 = ($videoremark[2]=="") ? ("") : ("checked"); ?>> Behaviour Issue (With Student,staff etc)<br>
+        <input type="checkbox" class="" name="Loose_Comments" value="Loose Comments/Rearkes" <?php echo $Variable4 = ($videoremark[3]=="") ? ("") : ("checked"); ?>> Loose Comments/Rearkes<br>
+        <input type="checkbox" class="" name="others" value="Others" <?php echo $Variable5 = ($videoremark[4]=="") ? ("") : ("checked"); ?>> Others<br>
+        <!-- <textarea class="form-control" rows="5" class="videoremoveportioncomment" name="videoremoveportioncomment" placeholder="Please Enter The details"></textarea></div> -->
     </td>
     </tr>
     <tr>

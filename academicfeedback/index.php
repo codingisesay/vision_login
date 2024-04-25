@@ -15,8 +15,8 @@ include('../session.php');
 include('academicfeedbackFunction.php');
 include('academicfeedbackNavBar.php');
 date_default_timezone_set('Asia/Kolkata');
-$today = date("Y-m-d");
-// $today = "2024-03-19";
+// $today = date("Y-m-d");
+$today = "2024-03-19";
 $dateChecklistData = AllClassInDate($today);
 $userNAme = fetchUserNameById($user_id);
 
